@@ -20,7 +20,7 @@ Only edit files your person owns. If a change is needed in someone else's file, 
 | Owner | Files |
 |---|---|
 | **Logan** | `server.js`, `lib/**`, `public/index.html`, `public/style.css`, `public/app.js`, `examples/**`, `package.json`, `package-lock.json`, `README.md`, `CLAUDE.md`, `OUTLINE.md`, `.gitignore`, `.gitattributes`, `.env.example` |
-| **Isabel** | `data/practice.json`, `public/practice.js`, `public/practice.css` |
+| **Isabel** | `data/practice.json`, `public/practice.js`, `public/practice.css`, `notes/**` (e.g. `notes/sascc-panel.md`: partner panel notes and quotes) |
 
 New files: create them only inside your own area. Ask before adding anything elsewhere.
 
