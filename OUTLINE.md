@@ -184,25 +184,54 @@ README.md             problem, solution, how to run, team
 
 **Hand-off points**
 - **11:45:** Logan pushes the skeleton (page shell with a Practice tab containing an empty `<div id="practice">`), and Isabel pulls.
-- **12:45:** Isabel pushes her scenarios, and Logan picks the best 3 to 4 scam messages to use as the Checker's demo examples.
+- **12:30:** Isabel pushes her scenarios, and Logan picks the best 3 to 4 scam messages to use as the Checker's demo examples.
 - **1:30:** both merged, deployed, and testing together.
 - **1:45:** code freeze, then rehearse.
 
 **Git rules:** pull before starting, push small commits every 20 to 30 minutes, and stay in your own files. If you must touch the other person's file, tell them first.
 
-## 9. Timeline
+## 9. Priorities and time blocks
 
-| Time | Goal |
-|---|---|
-| 10:45 | Partner panel: pitch lead captures SASCC pain points and quotes |
-| 11:45 | Build starts: project skeleton, server running, UI shell |
-| 12:30 | Red-flag rules working end to end, example scams loaded |
-| 1:00 | Keenable lookup + Gemini AI layer wired in |
-| 1:15 | Practice mode working (content person writes scenarios from 11:45) |
-| 1:30 | Deployed to public URL; polish and accessibility pass |
-| 1:45 | **Code freeze**: bug fixes only, rehearse the demo |
-| 2:00 | README final, submission draft prepared (Logan submits) |
-| 2:15 | **Demos and judging** |
+Build window: **11:45 to 1:45 (2 hours)**, then freeze. Work strictly top-down: never start a lower priority while a higher one is broken.
+
+### Priority tiers
+| Priority | What | Why it's here |
+|---|---|---|
+| **P0: no demo without it** | Privacy core (redaction, no storage, warning note) · rule-based checker · verdict + what to do + report links · accessible layout · **deployed live URL** | A working, safe, accessible checker on a public link is already a complete entry |
+| **P1: makes it strong** | Gemini AI explanation (with "rules can't be overruled") · Practice mode | "Where's the AI?" + the differentiator |
+| **P2: makes it polished** | Keenable lookup · one-click demo examples · demo rate limit · README | Uses the sponsor credits, smooths the demo |
+| **P3: only if ahead** | Read-aloud · PWA "Add to Home Screen" · "Circulating now" panel · translation | Nice extras for the pitch |
+
+**Cut line:** at **1:15**, anything in P2 or P3 that isn't started gets dropped. Use the remaining time to make P0 and P1 solid.
+
+### Before 11:45 (now)
+- **Isabel:** partner panel notes, SASCC quotes, and SASCC's phone number or website for the "Get help" section.
+- **Logan:** create a hosting account (Render recommended), pick the final name, and confirm whether pre-building is allowed.
+
+### Logan (with Claude Code)
+| Time | Priority | Block |
+|---|---|---|
+| 11:45 to 12:00 | P0 | Skeleton: server, page shell, shared accessible styles, empty Practice tab. **Push**, and Isabel pulls |
+| 12:00 to 12:30 | P0 | Privacy core + red-flag rules + verdict/results screen |
+| 12:30 to 12:45 | P0 | **Deploy early** to the live URL to find hosting problems while there's time |
+| 12:45 to 1:10 | P1 | Gemini layer, model fallback chain, rules-override safety check |
+| 1:10 to 1:30 | P2 | Keenable lookup, demo examples, length cap and rate limit |
+| 1:30 to 1:45 | — | Merge Isabel's Practice mode, redeploy, accessibility check (200% zoom, keyboard, phone) |
+| 1:45 to 2:00 | — | **Freeze.** README, rehearse the demo |
+| 2:00 to 2:15 | — | Submission draft (Logan submits), wake up the live site |
+
+### Isabel
+| Time | Priority | Block |
+|---|---|---|
+| 11:45 to 12:30 | P1 | Write about 8 Practice scenarios in `data/practice.json`: mix scams and safe messages, each with red flags and a one-line lesson. **Push** |
+| 12:30 to 1:15 | P1 | Build the Practice quiz screen (`public/practice.js`) using the shared styles |
+| 1:15 to 1:30 | — | Push and test together with Logan |
+| 1:30 to 1:45 | — | Backup screenshots or screen recording of the live site |
+| 1:45 to 2:15 | — | Rehearse the pitch, give Logan team details for the submission |
+
+**If Isabel won't code:** she writes the scenarios (P1) and Logan builds the quiz screen in the 1:10 slot instead of Keenable (Keenable moves to P3).
+
+**2:15: Demos and judging**
 
 ## 10. Demo script (about 2 to 3 minutes)
 
