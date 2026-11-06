@@ -138,7 +138,7 @@
     }
 
     button.disabled = true;
-    button.textContent = 'Checking…';
+    button.textContent = 'Checking… this takes a few seconds';
     try {
       const res = await fetch('/api/check', {
         method: 'POST',
