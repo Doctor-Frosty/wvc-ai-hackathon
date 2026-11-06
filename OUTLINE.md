@@ -252,7 +252,7 @@ Claude prepares the draft; **Logan does the final submit.**
 - [ ] Title: Second Look
 - [ ] Summary (300 characters max)
 - [ ] Description
-- [ ] Team name: _needed_
+- [x] Team name: **Second Look**
 - [ ] Participant names: _needed_
 - [ ] Private contact email: _needed_
 - [ ] Impact: _from the panel notes and SASCC; no invented evidence_

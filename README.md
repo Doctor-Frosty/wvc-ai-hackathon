@@ -80,6 +80,6 @@ Keys are optional; without them the rules still work. To turn on the AI explanat
 - SASCC hosting it on their own accounts, with production limits and a privacy policy
 
 ## Team
-Logan and Isabel, with help from Claude Code.
+**Team Second Look:** Logan and Isabel, with help from Claude Code.
 
 *Second Look gives guidance, not a guarantee. If you're unsure, hang up and call someone you trust.*
