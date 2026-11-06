@@ -14,69 +14,77 @@
 
     <div class="no-print screen-tools">
       <p class="lead">Print this card and put it on the fridge or next to the phone.</p>
-      <p class="note">It's in large print on two pages. Print double-sided to get one sheet.</p>
+      <p class="note">It prints on one page, in color. If the colors don't print, turn on "Background graphics" in the print settings.</p>
       <button type="button" id="print-button" class="btn btn-primary">🖨️ Print this card</button>
       <p class="small-link"><a href="/">Back to start</a></p>
     </div>
 
     <article class="card" aria-label="Second Look card">
       <header class="card-head">
-        <p class="card-brand">Second Look</p>
-        <h1 id="card-title">Before you do anything, take a second look.</h1>
+        <img src="/icons/icon-192.png" alt="" class="card-logo" width="56" height="56">
+        <div>
+          <p class="card-brand">Second Look · Check it before you trust it.</p>
+          <h1 id="card-title">Before you do anything, take a second look.</h1>
+        </div>
       </header>
 
-      <section class="card-block">
-        <h2>Ask yourself three questions</h2>
-        <ol class="card-questions">
-          <li>Did they <strong>contact me</strong> out of the blue?</li>
-          <li>Are they <strong>rushing</strong> me, or asking me to <strong>keep it secret</strong>?</li>
-          <li>Do they want <strong>gift cards, crypto, a wire transfer, cash</strong>, or my <strong>private numbers</strong>?</li>
-        </ol>
-        <p class="card-rule">If the answer to any of these is yes:<br><strong>Hang up. It's OK.</strong></p>
-      </section>
+      <div class="card-cols">
+        <div class="card-col">
+          <section class="card-block card-q">
+            <h2>Ask yourself three questions</h2>
+            <ol class="card-questions">
+              <li>Did they <strong>contact me</strong> out of the blue?</li>
+              <li>Are they <strong>rushing</strong> me, or asking me to <strong>keep it secret</strong>?</li>
+              <li>Do they want <strong>gift cards, crypto, a wire transfer, cash</strong>, or my <strong>private numbers</strong>?</li>
+            </ol>
+            <p class="card-rule">If any answer is yes:<br><strong>Hang up. It's OK.</strong></p>
+          </section>
 
-      <section class="card-block card-friendly">
-        <h2>Careful with friendly strangers</h2>
-        <p class="card-examples">"Hi, how are you doing?" · "Sorry, wrong number!"</p>
-        <p>Some scams start with kind small talk, then ask for money weeks later. <strong>Don't know who it is? Don't reply.</strong></p>
-      </section>
+          <section class="card-block card-friendly">
+            <h2>Careful with friendly strangers</h2>
+            <p class="card-examples">"Hi, how are you doing?" · "Sorry, wrong number!"</p>
+            <p>Some scams start with kind small talk, then ask for money weeks later. <strong>Don't know who it is? Don't reply.</strong></p>
+          </section>
 
-      <!-- Filled in by card.js from Family setup. Hidden when there is no setup. -->
-      <section class="card-block card-personal" id="personal" hidden>
-        <h2 id="personal-title">My trusted list</h2>
-        <ul id="personal-list" class="card-list"></ul>
-      </section>
-
-      <section class="card-block page-two">
-        <p class="page-two-label" aria-hidden="true">Second Look · page 2</p>
-        <h2>Who to call</h2>
-        <ul class="card-list" id="who-to-call">
-          <li id="helper-line" hidden></li>
-          <li>SASCC (Successful Aging Solutions): <strong>(408) 868-1257</strong></li>
-          <li>Not sure? National Elder Fraud Hotline: <strong>1-833-372-8311</strong> (1-833-FRAUD-11)</li>
-          <li>Local help, any time, free: dial <strong>211</strong></li>
-          <li>Medicare scams: Senior Medicare Patrol, <strong>(855) 613-7080</strong></li>
-          <li>Money taken from a senior: Adult Protective Services, any time, <strong>(408) 975-4900</strong></li>
-          <li>Sheriff (non-emergency): <strong>(408) 299-2311</strong> · Someone in danger: <strong>911</strong></li>
-        </ul>
-      </section>
-
-      <section class="card-block card-two">
-        <div>
-          <h2>Get fewer scam calls</h2>
-          <p>California's free DROP request tells over 500 data brokers to delete your information: <strong>privacy.ca.gov/drop</strong></p>
-          <p>Do Not Call Registry: <strong>1-888-382-1222</strong></p>
+          <section class="card-block card-code">
+            <h2>Our family code word</h2>
+            <p class="code-word" aria-label="Write your family code word here">________________</p>
+            <p class="small">If a caller says they're family, ask for it. Write it by hand only.</p>
+          </section>
         </div>
-        <div>
-          <h2>Our family code word</h2>
-          <p class="code-word" aria-label="Write your family code word here">______________</p>
-          <p class="small">If a caller says they're family, ask for the code word. Write it by hand. Never type it into a phone or computer.</p>
+
+        <div class="card-col">
+          <!-- Filled in by card.js from Family setup. Hidden when there is no setup. -->
+          <section class="card-block card-personal" id="personal" hidden>
+            <h2 id="personal-title">My trusted list</h2>
+            <ul id="personal-list" class="card-list"></ul>
+          </section>
+
+          <section class="card-block card-call">
+            <h2>Who to call</h2>
+            <ul class="card-list" id="who-to-call">
+              <li id="helper-line" hidden></li>
+              <li>SASCC: <strong>(408) 868-1257</strong></li>
+              <li>Not sure? Elder Fraud Hotline: <strong>1-833-372-8311</strong></li>
+              <li>Local help, any time, free: <strong>211</strong></li>
+              <li>Medicare scams: <strong>(855) 613-7080</strong></li>
+              <li>Money taken: Adult Protective Services, 24/7: <strong>(408) 975-4900</strong></li>
+              <li>Sheriff, non-emergency: <strong>(408) 299-2311</strong></li>
+              <li class="emergency">Someone in danger: <strong>911</strong></li>
+            </ul>
+          </section>
+
+          <section class="card-block card-fewer">
+            <h2>Get fewer scam calls</h2>
+            <p>Free California DROP request: <strong>privacy.ca.gov/drop</strong></p>
+            <p>Do Not Call Registry: <strong>1-888-382-1222</strong></p>
+          </section>
         </div>
-      </section>
+      </div>
 
       <footer class="card-foot">
         <img src="/qr.svg" alt="QR code for the Second Look website" class="card-qr" width="96" height="96">
-        <p>Check a message online:<br><strong>wvc-ai-hackathon.onrender.com</strong><br>
+        <p>Check a message online: <strong>wvc-ai-hackathon.onrender.com</strong><br>
           <span class="small">Point your phone's camera at the square to open it.</span></p>
       </footer>
     </article>

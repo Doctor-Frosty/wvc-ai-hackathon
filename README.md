@@ -33,7 +33,7 @@ Generic scam checkers judge a message on its own. Second Look also checks it aga
 - **Dementia-friendly wording:** gentle and complete every time, never assuming the person remembers using it before.
 - **Explains in your language:** a scam text in Spanish, Vietnamese, Chinese or another language gets its explanation in that same language.
 - **🔊 Read it to me** and **keyboard-only and screen-reader friendly**: real buttons and labels, results announced automatically, visible focus outline.
-- **🖨️ A printable Second Look card** in true large print (about 18pt, two pages, print double-sided) for the fridge or by the phone, with a QR code to the app, because not every senior uses technology. It's personalized from the trusted list ("My bank: Wells Fargo… I do NOT have a home loan"), or prints a general version for SASCC workshops.
+- **🖨️ A printable Second Look card** on one colorful page (about 13pt, two columns) for the fridge or by the phone, with a QR code to the app, because not every senior uses technology. It's personalized from the trusted list ("My bank: Wells Fargo… I do NOT have a home loan"), or prints a general version for SASCC workshops.
 - **California support:** each result names the one agency that fits the scam type (DFPI for investment and crypto scams, Senior Medicare Patrol, the SSA Inspector General, Santa Clara County Adult Protective Services, the CA Attorney General and FTC, 211 for local help), plus California's free **DROP** request to get fewer scam calls.
 
 ## Privacy and safety

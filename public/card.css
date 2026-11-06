@@ -1,100 +1,91 @@
-/* Printable Second Look card. Uses the shared tokens from style.css. */
+/* Printable Second Look card: one colorful letter-size sheet for the fridge.
+   Uses the shared tokens from style.css. Everything is sized in rem, so the print
+   rules scale the whole sheet with one root size. */
 
-#card-page { max-width: 46rem; }
-
+#card-page { max-width: 62rem; }
 .screen-tools { margin-bottom: 1.5rem; }
 
+/* Keep colors and backgrounds when printing (browsers drop them by default). */
+.card, .card * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
 .card {
-  border: 4px solid var(--color-text);
-  border-radius: var(--radius);
-  padding: 1.5rem;
+  border: 4px solid var(--color-primary);
+  border-radius: 1rem;
+  overflow: hidden;
   background: #fff;
 }
 
-.card-head { border-bottom: 3px solid var(--color-text); padding-bottom: 0.75rem; }
-.card-brand { font-weight: 800; font-size: var(--text-small); letter-spacing: 0.04em; text-transform: uppercase; }
-.card h1 { font-size: 2rem; margin-top: 0.25rem; }
-.card h2 { font-size: 1.5rem; margin: 0 0 0.5rem; }
+/* Blue header band */
+.card-head {
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--color-primary); color: #fff;
+  padding: 1rem 1.25rem;
+}
+.card-logo { width: 3.5rem; height: 3.5rem; border-radius: 0.6rem; border: 2px solid #fff; flex: none; }
+.card-brand { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; color: #dfe8f7; }
+.card h1 { font-size: 2rem; line-height: 1.15; margin-top: 0.15rem; }
+.card h2 { font-size: 1.4rem; margin: 0 0 0.4rem; line-height: 1.2; }
 
-.card-block { margin-top: 1.25rem; }
+/* Two columns that stack on narrow screens */
+.card-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 1.25rem; }
+.card-col { display: grid; gap: 0.9rem; align-content: start; min-width: 0; }
+@media (max-width: 44rem) { .card-cols { grid-template-columns: 1fr; } }
 
-.card-questions { margin: 0; padding-left: 2rem; font-size: 1.5rem; }
-.card-questions li + li { margin-top: 0.5rem; }
+.card-block { border-radius: 0.75rem; padding: 0.8rem 1rem; min-width: 0; }
 
+/* Questions: light blue */
+.card-q { background: #eef3fb; border: 3px solid var(--color-primary); }
+.card-questions { margin: 0; padding-left: 1.6rem; font-size: 1.3rem; }
+.card-questions li + li { margin-top: 0.35rem; }
 .card-rule {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border: 3px solid var(--color-scam);
-  border-radius: var(--radius);
-  background: var(--color-scam-bg);
-  color: var(--color-scam);
-  font-size: 1.5rem;
+  margin-top: 0.7rem; padding: 0.6rem 0.9rem; border-radius: 0.6rem;
+  background: var(--color-scam); color: #fff; font-size: 1.25rem; line-height: 1.3;
 }
-.card-rule strong { font-size: 1.875rem; }
+.card-rule strong { font-size: 1.8rem; }
 
-.card-friendly {
-  border: 3px solid var(--color-caution);
-  border-radius: var(--radius);
-  background: var(--color-caution-bg);
-  color: var(--color-caution);
-  padding: 0.75rem 1rem;
-}
-.card-friendly p + p { margin-top: 0.4rem; }
+/* Friendly strangers: amber */
+.card-friendly { background: var(--color-caution-bg); border: 3px solid var(--color-caution); color: #3d2700; }
+.card-friendly h2 { color: var(--color-caution); }
+.card-friendly p + p { margin-top: 0.35rem; }
 .card-examples { font-style: italic; font-weight: 700; }
 
-.card-personal {
-  border: 3px dashed var(--color-text);
-  border-radius: var(--radius);
-  padding: 1rem;
-}
+/* Code word: dashed write-in */
+.card-code { border: 3px dashed var(--color-text); }
+.code-word { font-size: 1.6rem; letter-spacing: 0.08em; margin: 0.1rem 0 0.2rem; }
 
-.card-list { margin: 0; padding-left: 1.5rem; }
-.card-list li + li { margin-top: 0.4rem; }
+/* Personal list: green, from Family setup */
+.card-personal { background: var(--color-ok-bg); border: 3px solid var(--color-ok); color: #0b2e19; }
+.card-personal h2 { color: var(--color-ok); }
 
-.card-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-.card-two p + p { margin-top: 0.5rem; }
+/* Who to call: white with blue edge */
+.card-call { border: 3px solid var(--color-primary); }
+.card-list { margin: 0; padding-left: 1.3rem; }
+.card-list li + li { margin-top: 0.3rem; }
+.card-list .emergency { color: var(--color-scam); font-weight: 700; }
+/* Never split a phone number or web address across lines */
+#who-to-call strong, .card-fewer strong, .card-foot strong { white-space: nowrap; }
 
-.write-in, .code-word { letter-spacing: 0.08em; }
-.code-word { font-size: 1.75rem; margin: 0.25rem 0 0.5rem; }
+.card-fewer { background: #f3f4f7; border: 2px solid #c9ced8; }
+.card-fewer p + p { margin-top: 0.3rem; }
+
 .small { font-size: 1rem; }
 
 .card-foot {
-  margin-top: 1.25rem;
-  padding-top: 0.75rem;
-  border-top: 2px solid var(--color-text);
-  font-size: 1.125rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: flex; align-items: center; gap: 1rem;
+  border-top: 3px solid var(--color-primary);
+  padding: 0.75rem 1.25rem; font-size: 1.1rem;
 }
 .card-qr { width: 6rem; height: 6rem; flex: none; }
 
-@media (max-width: 40rem) {
-  .card-two { grid-template-columns: 1fr; }
-  .card { padding: 1rem; }
-}
-
-/* Paper: one page, black and white friendly, no screen controls */
-.page-two-label { display: none; }
-
-/* True large print on paper: body text about 18pt, smallest text about 15pt.
-   Two pages (print double-sided for one sheet): page 1 is the questions and
-   the personal list, page 2 is who to call, fewer scam calls, code word and QR. */
+/* ---------- Paper: one letter-size page ---------- */
 @media print {
-  @page { size: letter portrait; margin: 0.45in; }
-  html { font-size: 18px; }
-  .small, .card-foot .small { font-size: 1.125rem; }
+  @page { size: letter portrait; margin: 0.35in; }
+  html { font-size: 12.75px; }           /* body text ~13pt, title ~19pt; leaves a safety margin on one page */
+  .small { font-size: 1.1rem; }
   html, body { background: #fff; }
-  body { line-height: 1.35; }
+  body { line-height: 1.32; }
   main#card-page { max-width: none; padding: 0; margin: 0; }
   .no-print { display: none !important; }
-  .card { border: 0; padding: 0; }
-  .card-block { margin-top: 0.9rem; break-inside: avoid; }
-  .page-two { break-before: page; margin-top: 0; }
-  .page-two-label { display: block; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
-  .card-foot { break-inside: avoid; }
-  .card-rule { background: #fff; color: #000; border-color: #000; margin-top: 0.6rem; padding: 0.5rem 0.9rem; }
-  .card-personal { padding: 0.6rem 0.9rem; }
-  .card-friendly { background: #fff; color: #000; border-color: #000; border-style: dashed; padding: 0.6rem 0.9rem; }
-  .card-list li + li, .card-questions li + li { margin-top: 0.2rem; }
+  .card { break-inside: avoid; border-width: 3px; }
+  .card-cols { grid-template-columns: 1fr 1fr; }
 }
