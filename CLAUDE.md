@@ -7,7 +7,12 @@ Two people build this repo at the same time, each with their own Claude Code ses
 Read `OUTLINE.md` first. It is the plan: product, priorities (P0 to P3), time blocks and demo script.
 
 ## Project in one line
-**Second Look** ("Check it before you trust it."): an accessible web app for seniors (WVC AI for Social Good Hackathon, SASCC track). The **Checker** explains whether a pasted message looks like a scam and what to do. **Practice mode** ("Spot the Scam") trains people to recognize scams before they happen.
+**Second Look** ("Check it before you trust it."): an accessible web app for seniors (WVC AI for Social Good Hackathon, SASCC track). A **Home screen** asks "What happened?" with three big choices:
+- 📩 **I got a message:** the Checker explains whether a pasted message looks like a scam and what to do.
+- 📞 **I got a phone call:** a tap-through question flow (no typing) checks a call that already happened.
+- 🚨 **I'm on a call right now:** one calm screen ("It's OK to hang up") to stop a scam in progress.
+
+**Practice mode** ("Spot the Scam"), linked from Home, trains people to recognize scams before they happen. The app never listens to or records calls (California all-party consent law, and the "store nothing" rule).
 
 ## File ownership (most important rule)
 Only edit files your person owns. If a change is needed in someone else's file, **stop and tell your person** so they can coordinate. Don't make the edit yourself.
@@ -22,7 +27,7 @@ New files: create them only inside your own area. Ask before adding anything els
 ## Practice mode contract (how the two halves connect)
 These connection points stay fixed. Don't change them without both people agreeing.
 
-- **Mount point:** `public/index.html` (Logan) contains a Practice tab with `<section id="practice"></section>` and loads `practice.css` and `practice.js`.
+- **Mount point:** `public/index.html` (Logan) contains a Practice screen, `<section id="practice"></section>`, reached from the "Practice spotting scams" link on Home. It loads `practice.css` and `practice.js`. Logan's code handles showing and hiding screens and the "Back to home" button outside `#practice`.
 - **Entry point:** `public/practice.js` defines `window.initPractice(rootElement)`. Logan's `app.js` calls it once with the `#practice` element. Practice mode renders everything inside that element and touches nothing outside it.
 - **Data:** `practice.js` loads scenarios with `fetch('/data/practice.json')`. The server serves `data/` as static files.
 - **Styles:** `practice.css` uses the shared CSS variables from `style.css` (`--font-body`, `--text-base`, `--color-text`, `--color-bg`, `--color-scam`, `--color-caution`, `--color-ok`, `--btn-height`, etc.). It doesn't redefine `:root` and doesn't style elements outside `#practice` (prefix every selector with `#practice`).
@@ -42,7 +47,7 @@ These connection points stay fixed. Don't change them without both people agreei
   ]
 }
 ```
-`channel` is one of `text`, `email`, `call`, `letter`. `answer` is `scam` or `safe`. Include about 8 scenarios, at least 2 of them safe. All names, numbers and links in scenarios must be fictional.
+`channel` is one of `text`, `email`, `call`, `letter`. `answer` is `scam` or `safe`. Include about 8 scenarios, at least 2 of them safe and **2 to 3 of them phone calls** (`channel: "call"`, with `message` written as what the caller says, for example "Grandma? It's me... I'm in trouble, please don't tell Mom."). All names, numbers and links in scenarios must be fictional.
 
 ## Non-negotiable rules for every feature
 **Privacy (top priority)**

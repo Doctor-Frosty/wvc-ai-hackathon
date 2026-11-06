@@ -26,10 +26,40 @@ A simple, large-print web tool where a senior (or a family member helping them) 
 
 ## 4. Core user flow (the demo)
 
-1. **Paste:** a big text box, "Paste the message or describe the call."
+### Home screen: "What happened?"
+Three big buttons, one per line, nothing else on the screen:
+- 📩 **"I got a message"** (text, email or letter): the message Checker below
+- 📞 **"I got a phone call"**: the guided call check below
+- 🚨 **"I'm on a call right now"**: the emergency screen below
+
+Plus a smaller link: 🎓 **"Practice spotting scams"** (Practice mode).
+
+Most scams against seniors start with a **phone call**, and nobody can paste a call, so calls get their own two flows.
+
+### 🚨 "I'm on a call right now": one calm screen, no questions
+Built to stop a scam *in progress*. Very large text, readable in a few seconds:
+- **"It's OK to hang up."** Real agencies and banks never mind if you call them back.
+- **Don't** give any numbers, buy gift cards, send money, or press keys they tell you to.
+- **Call back** on a number *you* look up, from your card, your bill or the official website, never one they gave you.
+- **Family emergency?** Hang up and call that person directly, or ask for your **family code word**.
+- Big buttons: **"Call SASCC"** (`tel:` link, number to be confirmed) and **"Done, I hung up"**, which leads to the guided call check.
+
+### 📞 "I got a phone call": tap answers, no typing
+3 to 4 questions, one per screen, big buttons:
+1. **Who did they say they were?** Grandchild or family · Government (IRS, Social Security, Medicare) · Bank · Tech support · Prize or lottery · Someone else
+2. **What did they want?** (tap all that apply) Money · Gift cards or crypto · Personal numbers (SSN, Medicare, bank) · Remote access to your computer · Nothing yet
+3. **Did they rush you, threaten you, or tell you to keep it secret?** Yes / No / Not sure
+4. **Optional:** "What number called you?" A Keenable lookup for scam reports on that number (only the number is sent).
+
+The rules turn the answers into the same result screen as the message Checker (verdict, reasons, what to do, report it). Gemini adds a friendly explanation when available. Stretch: 🎤 **"Tell us what happened"** using the browser's built-in voice typing.
+
+**Out of scope: listening to or recording calls.** California requires everyone on a call to consent before it's recorded, and recording would break the "store nothing" rule.
+
+### 📩 "I got a message": the Checker
+1. **Paste:** a big text box, "Paste the message here."
 2. **Check:** one big button.
-3. **Result**, in plain language:
-   - a verdict badge: 🔴 **Likely scam** / 🟡 **Be careful** / 🟢 **No warning signs found**
+3. **Result**, in plain language (shared by the message and call flows):
+   - a verdict badge: ⛔ **Likely scam** / ⚠️ **Be careful** / ✅ **No warning signs found**
    - each warning sign found, explained in one sentence ("They asked for gift cards. Real companies and government agencies never ask for payment in gift cards.")
    - a **"What to do now"** checklist: don't reply, don't click, hang up and call back on a number you look up yourself, call a family member
    - a **"Report it"** section with links and phone numbers (FTC, IC3, SSA OIG, 1-800-MEDICARE, SASCC)
@@ -133,13 +163,13 @@ If there's no AI key, layers 2 and 3 still give a complete product.
 
 ### Proposed file layout
 ```
-server.js             Express app: serves public/ and POST /api/check
-lib/redflags.js       rule definitions + scoring
+server.js             Express app: serves public/, POST /api/check (message) and POST /api/check-call (call answers)
+lib/redflags.js       rule definitions + scoring (messages and call answers)
 lib/keenable.js       Keenable search wrapper (key from env)
 lib/resources.js      reporting links and phone numbers
 lib/ai.js             Gemini call returning structured JSON (optional, with fallback)
 data/practice.json    Practice mode scenarios + answers + lessons
-public/index.html     the one-page UI (Check tab + Practice tab)
+public/index.html     the one-page UI: Home, On a call now, Phone call, Message, Results, Practice screens
 public/style.css      large-print, accessible styles
 public/app.js         calls /api/check, renders results
 examples/             real-looking scam messages for the demo
@@ -150,6 +180,9 @@ README.md             problem, solution, how to run, team
 
 ### Must have (MVP by about 1:30)
 - [ ] **Privacy and safety rules** (see the privacy and safety section): no storage, warning note, redaction before Gemini, minimal Keenable queries, never "Safe", rules override AI
+- [ ] **Home screen** ("What happened?") with 3 big choices + Practice link
+- [ ] **"I'm on a call right now"** emergency screen
+- [ ] **"I got a phone call"** guided tap-through check
 - [ ] Paste box, Check button, verdict badge
 - [ ] Red-flag rules with plain-language explanations
 - [ ] "What to do now" checklist and "Report it" links
@@ -162,6 +195,7 @@ README.md             problem, solution, how to run, team
 - [ ] README
 
 ### Nice to have (only if MVP is done)
+- [ ] 🎤 "Tell us what happened" voice typing for the call flow (browser built-in)
 - [ ] "Circulating now" panel: current Bay Area or senior scams via Keenable
 - [ ] 🔊 "Read it to me" using the browser's built-in speech (Web Speech API, free)
 - [ ] Spanish, Vietnamese or Chinese toggle (common languages in Santa Clara County)
@@ -170,7 +204,7 @@ README.md             problem, solution, how to run, team
 - [ ] Printable one-page "Scam red flags" handout for SASCC workshops
 
 ### Out of scope today
-- User accounts, saving history, phone or SMS integration, reading screenshots (OCR), paid AI APIs
+- User accounts, saving history, phone or SMS integration, **listening to or recording calls** (California all-party consent law + "store nothing" rule), reading screenshots (OCR), paid AI APIs
 
 ## 8. Team roles (Logan + Isabel)
 
@@ -178,14 +212,14 @@ README.md             problem, solution, how to run, team
 
 | | Logan (with Claude Code) | Isabel |
 |---|---|---|
-| **Builds** | The Checker end to end: server, red-flag rules, Gemini, Keenable, results UI, shared page shell and styles | Practice mode end to end: scenarios, quiz screen, feedback, score |
+| **Builds** | Home screen, "On a call now" screen, phone-call check, message Checker, server, red-flag rules, Gemini, Keenable, results UI, shared page shell and styles | Practice mode end to end: scenarios (include 2 to 3 **phone-call scripts**), quiz screen, feedback, score |
 | **Owns files** | `server.js`, `lib/*`, `public/index.html`, `public/style.css`, `public/app.js`, `examples/` | `data/practice.json`, `public/practice.js`, `public/practice.css` |
 | **Content** | Reporting resources (`lib/resources.js`) | About 8 practice scenarios (realistic scams and safe messages, with lessons), plus the 3 to 4 demo example scams |
 | **Pitch** | Deploys the app and drives the live demo | Captures SASCC quotes at the 10:45 panel, writes the 2-minute script, makes the backup screenshots or video, presents the opening and impact |
 | **Submission** | Reviews and clicks Submit | Supplies team details for the form |
 
 **Hand-off points**
-- **11:45:** Logan pushes the skeleton (page shell with a Practice tab containing an empty `<div id="practice">`), and Isabel pulls.
+- **11:45:** Logan pushes the skeleton (page shell with an empty Practice screen, `<section id="practice"></section>`), and Isabel pulls.
 - **12:30:** Isabel pushes her scenarios, and Logan picks the best 3 to 4 scam messages to use as the Checker's demo examples.
 - **1:30:** both merged, deployed, and testing together.
 - **1:45:** code freeze, then rehearse.
@@ -199,8 +233,8 @@ Build window: **11:45 to 1:45 (2 hours)**, then freeze. Work strictly top-down: 
 ### Priority tiers
 | Priority | What | Why it's here |
 |---|---|---|
-| **P0: no demo without it** | Privacy core (redaction, no storage, warning note) · rule-based checker · verdict + what to do + report links · accessible layout · **deployed live URL** | A working, safe, accessible checker on a public link is already a complete entry |
-| **P1: makes it strong** | Gemini AI explanation (with "rules can't be overruled") · Practice mode | "Where's the AI?" + the differentiator |
+| **P0: no demo without it** | Privacy core (redaction, no storage, warning note) · **Home screen** · **"On a call right now" screen** · rule-based message checker · verdict + what to do + report links · accessible layout · **deployed live URL** | A working, safe, accessible tool that also helps *during* a call is already a complete entry |
+| **P1: makes it strong** | **Phone-call guided check** · Gemini AI explanation (with "rules can't be overruled") · Practice mode | Covers the #1 scam channel, "Where's the AI?", and the differentiator |
 | **P2: makes it polished** | Keenable lookup · one-click demo examples · demo rate limit · README | Uses the sponsor credits, smooths the demo |
 | **P3: only if ahead** | Read-aloud · PWA "Add to Home Screen" · "Circulating now" panel · translation | Nice extras for the pitch |
 
@@ -213,11 +247,12 @@ Build window: **11:45 to 1:45 (2 hours)**, then freeze. Work strictly top-down: 
 ### Logan (with Claude Code)
 | Time | Priority | Block |
 |---|---|---|
-| 11:45 to 12:00 | P0 | Skeleton: server, page shell, shared accessible styles, empty Practice tab. **Push**, and Isabel pulls |
-| 12:00 to 12:30 | P0 | Privacy core + red-flag rules + verdict/results screen |
+| 11:45 to 12:00 | P0 | Skeleton: server, page shell with Home screen, shared accessible styles, empty Practice section. **Push**, and Isabel pulls |
+| 12:00 to 12:30 | P0 | Privacy core + red-flag rules + message results screen + "On a call right now" screen |
 | 12:30 to 12:45 | P0 | **Deploy early** to the live URL to find hosting problems while there's time |
-| 12:45 to 1:10 | P1 | Gemini layer, model fallback chain, rules-override safety check |
-| 1:10 to 1:30 | P2 | Keenable lookup, demo examples, length cap and rate limit |
+| 12:45 to 1:00 | P1 | Phone-call guided check (reuses the rules and results screen) |
+| 1:00 to 1:20 | P1 | Gemini layer, model fallback chain, rules-override safety check |
+| 1:20 to 1:30 | P2 | Keenable lookup (number from the call flow + message), demo examples, length cap and rate limit |
 | 1:30 to 1:45 | — | Merge Isabel's Practice mode, redeploy, accessibility check (200% zoom, keyboard, phone) |
 | 1:45 to 2:00 | — | **Freeze.** README, rehearse the demo |
 | 2:00 to 2:15 | — | Submission draft (Logan submits), wake up the live site |
@@ -225,7 +260,7 @@ Build window: **11:45 to 1:45 (2 hours)**, then freeze. Work strictly top-down: 
 ### Isabel
 | Time | Priority | Block |
 |---|---|---|
-| 11:45 to 12:30 | P1 | Write about 8 Practice scenarios in `data/practice.json`: mix scams and safe messages, each with red flags and a one-line lesson. **Push** |
+| 11:45 to 12:30 | P1 | Write about 8 Practice scenarios in `data/practice.json`: mix scams and safe ones, **including 2 to 3 phone-call scripts**, each with red flags and a one-line lesson. **Push** |
 | 12:30 to 1:15 | P1 | Build the Practice quiz screen (`public/practice.js`) using the shared styles |
 | 1:15 to 1:30 | — | Push and test together with Logan |
 | 1:30 to 1:45 | — | Backup screenshots or screen recording of the live site |
@@ -239,9 +274,10 @@ Build window: **11:45 to 1:45 (2 hours)**, then freeze. Work strictly top-down: 
 
 1. **Hook (20s):** "Last year seniors lost $7.7 billion to scams..." plus the SASCC quote.
 2. **Live demo (90s):**
-   - Paste a fake Medicare-card text, which comes back 🔴 with its red flags, what to do, and where to report.
-   - Show a grandparent voice-clone call description, which comes back 🔴 with the family code word tip.
-   - Show a normal message from a pharmacy, which comes back 🟢, to show it isn't alarmist.
+   - "Most scams start with a phone call." Tap 🚨 **I'm on a call right now** to show the calm "It's OK to hang up" screen.
+   - Tap **Done, I hung up**, then answer the call questions for a grandparent voice-clone call (Family · Money + gift cards · Rushed + secret), which comes back ⛔ with the family code word tip.
+   - Paste a fake Medicare-card text, which comes back ⛔ with its red flags, what to do, and where to report.
+   - Paste a normal message from a pharmacy, which comes back ✅, to show it isn't alarmist.
 3. **Practice mode (30s):** "But the best defense is recognizing it *before* it happens." Play 2 rounds of Spot the Scam.
 4. **How it works (20s):** an AI explanation, with rule-based red flags as a safety net, plus live web lookups through Keenable to see what others report.
 5. **Privacy and safety (15s):** "It never stores your messages, removes personal numbers before anything leaves our server, and will never tell you a scam is safe."
@@ -268,7 +304,7 @@ Claude prepares the draft; **Logan does the final submit.**
 ## 12. Open questions
 
 - [x] Final project name: **Second Look**
-- [ ] Will someone get a free Gemini API key (aistudio.google.com, about 2 minutes, Google account) and add it to `.env` as `GEMINI_API_KEY`?
+- [x] Gemini API key: added to `.env` and tested
 - [ ] Who has, or will create, a hosting account (Render, Railway or Vercel)?
-- [ ] Does SASCC have a phone number or website to include under "Report it" or "Get help"?
+- [ ] Does SASCC have a phone number or website to include under "Report it" or "Get help"? (Also needed for the **"Call SASCC"** button on the "On a call right now" screen.)
 - [ ] Do the judging criteria favor any specific area (impact, technical, design, presentation)?
