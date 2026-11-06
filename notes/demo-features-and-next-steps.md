@@ -57,7 +57,7 @@ Last checked: Fri Nov 6, 2026, from the code on `main`, the test suites, and the
 |---|---|---|
 | **Companies they really use** | 32 common companies in 7 groups (banks and payments, health care, water and power, phone and internet, shopping, mail and delivery, technology), ticked off | Names come from `data/companies.json`. Typing "Kaiser" is saved as "Kaiser Permanente" |
 | Other companies | A box for names not on the list | Comma between each |
-| **Accounts they really have** | Checking, savings, credit card, home loan, car loan, investments, **None of these** | Ticking "None" clears the others. Setup asks for one or the other, so an empty list is always a real answer |
+| **Which of these do they have?** (accounts) | Checking, savings, credit card, home loan, car loan, investments or retirement account, **They have none of these** | Explains in three short parts what to do, how it is used, and to be sure. Ticking "none" clears the others. Setup asks for one or the other, so an empty list is always a real answer |
 | **Who to call first** | Helper name and phone number | Phone is saved in a standard format (`+14085550123`) so the Call button always works |
 | DROP checklist item | "I have helped them file a California DROP request" | |
 | One big **Save** button | Saves on this device only | Greeting and Call button update straight away |

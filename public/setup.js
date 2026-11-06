@@ -14,7 +14,7 @@
     ['credit card', 'Credit card'],
     ['home loan', 'Home loan or mortgage'],
     ['car loan', 'Car loan'],
-    ['investments', 'Investments'],
+    ['investments', 'Investments or retirement account (like a 401k or IRA)'],
   ];
 
   const CATEGORIES = [
@@ -197,14 +197,31 @@
     const section = el(
       'fieldset',
       { class: 'setup-section', id: 'setup-accounts' },
-      el('legend', {}, 'Accounts they really have'),
-      el('p', { class: 'setup-hint' }, 'If a message is about an account they do not have, we can tell them right away that it is not real.')
+      el('legend', {}, 'Which of these do they have?'),
+      el(
+        'p',
+        { class: 'setup-hint' },
+        el('strong', {}, 'What to do: '),
+        'Tick every kind of account they have today. If you are not sure, ask them or look at a recent statement.'
+      ),
+      el(
+        'p',
+        { class: 'setup-hint' },
+        el('strong', {}, 'How we use it: '),
+        'If a message is about an account that is not ticked, such as a home loan payment when "Home loan or mortgage" is not ticked, Second Look will say it is probably a scam, because they have no such account. We save only the kinds of account you tick. We never ask for account numbers, balances or bank names.'
+      ),
+      el(
+        'p',
+        { class: 'setup-hint' },
+        el('strong', {}, 'Please be sure: '),
+        'Leave a box empty only if they really do not have that kind of account. A real message about it would be flagged as fake.'
+      )
     );
     for (const [value, label] of ACCOUNTS) {
       section.append(checkRow({ name: 'account', value, label, checked: saved.includes(value) }));
     }
     section.append(
-      checkRow({ name: 'account', value: 'none', label: 'None of these', checked: hasProfile && saved.length === 0 })
+      checkRow({ name: 'account', value: 'none', label: 'They have none of these', checked: hasProfile && saved.length === 0 })
     );
     return section;
   }
@@ -364,7 +381,7 @@
 
     // An empty accounts list means "none of these", so make sure that was a real answer.
     if (!data.accounts.length && !data.noneChosen) {
-      return showError('Please tick the accounts they have, or tick "None of these".', 'setup-accounts');
+      return showError('Please tick each kind of account they have. If they have none of them, tick "They have none of these".', 'setup-accounts');
     }
 
     let phone = '';
