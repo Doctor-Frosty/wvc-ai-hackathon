@@ -61,6 +61,10 @@ Keys are optional; without them the rules still work. To turn on the AI explanat
 
 **Tech:** Node.js + Express, plain HTML, CSS and JavaScript (no build step), Google Gemini, hosted on Render.
 
+## Documentation
+- **Handover brief for judges and SASCC:** a shareable page (link from the team).
+- **Developer guide:** [docs/DEVELOPERS.md](docs/DEVELOPERS.md): setup, architecture, rules, testing, security, deployment.
+
 ## Project layout
 | Path | What it is |
 |---|---|
