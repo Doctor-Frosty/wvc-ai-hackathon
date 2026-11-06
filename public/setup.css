@@ -1,0 +1,146 @@
+/* Second Look: Family setup styles.
+   Uses the shared variables from style.css. Never redefines :root.
+   Every selector starts with #setup so nothing leaks into other screens. */
+
+#setup .setup-privacy {
+  margin-bottom: 0;
+}
+
+/* Sections: one fieldset per question, one column */
+#setup .setup-section,
+#setup .setup-group {
+  min-width: 0;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+#setup .setup-group {
+  margin-top: 1.5rem;
+}
+
+#setup .setup-section > legend {
+  padding: 0;
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+#setup .setup-group > legend {
+  padding: 0;
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+#setup .setup-hint {
+  margin: 0.5rem 0 0.75rem;
+  font-size: var(--text-small);
+  color: var(--color-muted);
+}
+
+/* Text boxes */
+#setup .setup-field {
+  margin-top: 1.5rem;
+}
+
+#setup .setup-field > label {
+  display: block;
+  font-weight: 700;
+}
+
+#setup input[type="text"],
+#setup input[type="tel"] {
+  display: block;
+  width: 100%;
+  min-height: var(--btn-height);
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background: #fff;
+  border: 3px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+/* Big tick boxes: the whole row is the target, and the box is large */
+#setup .setup-check {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 3px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+#setup .setup-check input {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+
+/* A ticked row also gets a tinted background, never color alone: the box shows a tick */
+#setup .setup-check:has(input:checked) {
+  background: #e8effa;
+}
+
+#setup .setup-check:has(input:focus-visible) {
+  outline: 4px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Messages next to the Save button */
+#setup .setup-status {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  color: var(--color-ok);
+  background: var(--color-ok-bg);
+  border: 3px solid currentColor;
+  border-radius: var(--radius);
+}
+
+#setup .error {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-scam-bg);
+  border: 3px solid currentColor;
+  border-radius: var(--radius);
+}
+
+/* "Use example setup" and "Delete everything": small text links, not buttons */
+#setup .setup-extras {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2rem;
+  margin-top: 2rem;
+}
+
+#setup .setup-textlink {
+  min-height: 3rem;
+  padding: 0.5rem;
+  font: inherit;
+  font-size: var(--text-small);
+  color: var(--color-primary);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+#setup .setup-textlink.setup-danger {
+  color: var(--color-urgent);
+}
+
+#setup .setup-extras + .setup-hint {
+  text-align: center;
+}
