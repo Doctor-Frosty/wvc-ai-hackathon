@@ -65,17 +65,24 @@
 }
 
 /* Paper: one page, black and white friendly, no screen controls */
-/* Everything on the card is sized in rem, so shrinking the root size scales the
-   whole card to fit one letter page while staying large print (body ~13.5pt). */
+.page-two-label { display: none; }
+
+/* True large print on paper: body text about 18pt, smallest text about 15pt.
+   Two pages (print double-sided for one sheet): page 1 is the questions and
+   the personal list, page 2 is who to call, fewer scam calls, code word and QR. */
 @media print {
-  @page { size: letter portrait; margin: 0.4in; }
-  html { font-size: 13px; }
+  @page { size: letter portrait; margin: 0.45in; }
+  html { font-size: 18px; }
+  .small, .card-foot .small { font-size: 1.125rem; }
   html, body { background: #fff; }
   body { line-height: 1.35; }
   main#card-page { max-width: none; padding: 0; margin: 0; }
   .no-print { display: none !important; }
-  .card { border-width: 3px; padding: 1rem 1.25rem; break-inside: avoid; }
-  .card-block { margin-top: 0.8rem; }
+  .card { border: 0; padding: 0; }
+  .card-block { margin-top: 0.9rem; break-inside: avoid; }
+  .page-two { break-before: page; margin-top: 0; }
+  .page-two-label { display: block; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+  .card-foot { break-inside: avoid; }
   .card-rule { background: #fff; color: #000; border-color: #000; margin-top: 0.6rem; padding: 0.5rem 0.9rem; }
   .card-personal { padding: 0.6rem 0.9rem; }
   .card-list li + li, .card-questions li + li { margin-top: 0.2rem; }
