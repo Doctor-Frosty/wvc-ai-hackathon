@@ -40,6 +40,27 @@ Checking tools like this already exist (AARP, Norton Genie, Scamio). Practice mo
 3. Instant feedback highlights the red flags in the message, with a one-line lesson.
 4. At the end: a score plus "Your top 3 things to remember."
 
+### Privacy and safety: top priority
+People will paste real messages that may contain their personal information. Every feature must follow these rules.
+
+**Privacy**
+1. **Store nothing:** no database, no accounts, no message logs. Server logs record only errors, never message text.
+2. **Warn before typing:** a clear note right above the box says "Don't include your Social Security, Medicare, bank or card numbers."
+3. **Redact before sending:** before any text goes to Gemini, the server replaces anything that looks like an SSN, Medicare number, card number or bank account number with `[removed]`. The Gemini free tier may use submitted data to improve Google's products, so nothing sensitive goes there.
+4. **Send the minimum to Keenable:** only an extracted phone number, website or company name, never the full message.
+5. **Keys stay secret:** keys live only in `.env` on the server or in the host's private settings, never in browser code or git.
+6. **Say it on the page:** a short, plain privacy note: "We don't save what you paste."
+
+**Safety (never falsely reassure)**
+1. Never say "Safe". The best verdict is "No warning signs found", always with "When in doubt, hang up and call back on a number you look up yourself."
+2. **Rules can't be overruled:** if the rules find a high-risk sign (gift cards, crypto, wire transfer, "safe account", a request for an SSN or Medicare number), the AI cannot downgrade the verdict.
+3. **Resist prompt injection:** the AI is told the message is untrusted text to analyze, not instructions to follow.
+4. Footer: "This tool gives guidance, not a guarantee. If you're unsure, call SASCC or someone you trust."
+5. Results are shown as plain text, never as HTML, so pasted content can't run.
+6. **Demo guards:** cap messages at about 2,000 characters and add a simple per-visitor rate limit to protect credits during judging. Production limits are for SASCC's future version.
+
+**Pitch line:** "It never stores your messages, removes personal numbers before anything leaves our server, and will never tell you a scam is safe."
+
 ### Accessibility: a core requirement, not polish
 Built for seniors first. Every screen must pass these checks:
 
@@ -126,6 +147,7 @@ README.md             problem, solution, how to run, team
 ## 7. Scope
 
 ### Must have (MVP by about 1:30)
+- [ ] **Privacy and safety rules** (see the privacy and safety section): no storage, warning note, redaction before Gemini, minimal Keenable queries, never "Safe", rules override AI
 - [ ] Paste box, Check button, verdict badge
 - [ ] Red-flag rules with plain-language explanations
 - [ ] "What to do now" checklist and "Report it" links
@@ -191,7 +213,8 @@ README.md             problem, solution, how to run, team
    - Show a normal message from a pharmacy, which comes back 🟢, to show it isn't alarmist.
 3. **Practice mode (30s):** "But the best defense is recognizing it *before* it happens." Play 2 rounds of Spot the Scam.
 4. **How it works (20s):** an AI explanation, with rule-based red flags as a safety net, plus live web lookups through Keenable to see what others report.
-5. **Impact and next steps (30s):** how SASCC could use Practice mode in workshops and the checker on their website; possible next steps are more languages and read-aloud.
+5. **Privacy and safety (15s):** "It never stores your messages, removes personal numbers before anything leaves our server, and will never tell you a scam is safe."
+6. **Impact and next steps (30s):** how SASCC could use Practice mode in workshops and the checker on their website; possible next steps are more languages and read-aloud.
 
 **Backup:** screenshots or a screen recording in case the Wi-Fi or live site fails.
 
