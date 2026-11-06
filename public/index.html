@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Second Look</title>
   <meta name="description" content="Check it before you trust it. A second opinion on a suspicious call or message.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/icon-180.png">
+  <link rel="icon" href="/icons/icon-192.png" type="image/png">
+  <meta name="theme-color" content="#0a3d91">
+  <meta name="apple-mobile-web-app-title" content="Second Look">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/setup.css">
 </head>
@@ -52,6 +57,9 @@
         <span id="verdict-icon" class="verdict-icon" aria-hidden="true"></span>
         <h1 id="verdict-title" tabindex="-1"></h1>
       </div>
+      <p class="read-aloud" id="read-wrap" hidden>
+        <button type="button" id="read-button" class="link-button" aria-pressed="false">🔊 Read it to me</button>
+      </p>
 
       <p id="explanation" class="lead" hidden></p>
 
@@ -71,6 +79,7 @@
         <p>This tool gives guidance, not a guarantee. If you're unsure, call someone you trust.</p>
       </div>
 
+      <a id="results-call" class="btn btn-urgent" href="#" hidden>Call</a>
       <button type="button" id="startover-button" class="btn btn-primary">Start over</button>
     </section>
 

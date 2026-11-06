@@ -53,7 +53,11 @@
   padding-top: 0.75rem;
   border-top: 2px solid var(--color-text);
   font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
+.card-qr { width: 6rem; height: 6rem; flex: none; }
 
 @media (max-width: 40rem) {
   .card-two { grid-template-columns: 1fr; }

@@ -10,6 +10,7 @@
 
   const screens = ['home', 'oncall', 'results', 'setup'];
   let setupStarted = false;
+  let trustedCall = { href: `tel:${SASCC_PHONE}`, label: '📞 Call SASCC' };
 
   // ---------- Profile (saved by Family setup, on this device only) ----------
   function loadProfile() {
@@ -46,14 +47,19 @@
     const phone = helper ? cleanPhone(helper.phone) : '';
     const helperName = helper && typeof helper.name === 'string' ? helper.name.trim().slice(0, 40) : '';
     // Always offer one trusted call: the family helper if set up, otherwise SASCC.
-    helperLink.href = `tel:${phone || SASCC_PHONE}`;
-    helperLink.textContent = phone ? `📞 Call ${helperName || 'my helper'}` : '📞 Call SASCC';
+    trustedCall = {
+      href: `tel:${phone || SASCC_PHONE}`,
+      label: phone ? `📞 Call ${helperName || 'my helper'}` : '📞 Call SASCC',
+    };
+    helperLink.href = trustedCall.href;
+    helperLink.textContent = trustedCall.label;
     helperLink.hidden = false;
   }
 
   // ---------- Screens ----------
   function show(name, { focus } = {}) {
     if (!screens.includes(name)) name = 'home';
+    if (name !== 'results' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
     for (const s of screens) $(s).hidden = s !== name;
     $('setup-back').hidden = name !== 'setup';
 
@@ -116,8 +122,47 @@
 
     if (result.report) $('report-line').textContent = String(result.report);
 
+    // After a warning, the most helpful next step is talking to someone trusted.
+    applyProfile();
+    const call = $('results-call');
+    call.hidden = kind !== 'scam' && kind !== 'caution';
+    call.href = trustedCall.href;
+    call.textContent = trustedCall.label;
+
     show('results', { focus: 'verdict-title' });
   }
+
+  // ---------- Read it to me (built-in device voice; nothing is sent anywhere) ----------
+  const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+
+  function stopReading() {
+    if (canSpeak) window.speechSynthesis.cancel();
+    $('read-button').textContent = '🔊 Read it to me';
+    $('read-button').setAttribute('aria-pressed', 'false');
+  }
+
+  function readResults() {
+    if (!canSpeak) return;
+    if (window.speechSynthesis.speaking) return stopReading();
+    const items = (id) => [...document.querySelectorAll(`#${id} li`)].map((li) => li.textContent);
+    const parts = [
+      $('verdict-title').textContent + '.',
+      $('explanation').hidden ? '' : $('explanation').textContent,
+      'Why.', ...items('reasons'),
+      'What to do now.', ...items('steps'),
+    ].filter(Boolean);
+    const u = new SpeechSynthesisUtterance(parts.join(' '));
+    u.rate = 0.9;
+    u.lang = 'en-US';
+    u.onend = stopReading;
+    u.onerror = stopReading;
+    $('read-button').textContent = '⏹ Stop reading';
+    $('read-button').setAttribute('aria-pressed', 'true');
+    window.speechSynthesis.speak(u);
+  }
+
+  $('read-wrap').hidden = !canSpeak;
+  $('read-button').addEventListener('click', readResults);
 
   // ---------- Check ----------
   async function runCheck(event) {

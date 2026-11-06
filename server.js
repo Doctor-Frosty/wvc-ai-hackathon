@@ -8,6 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { checkText } from './lib/check.js';
 import { checkRateLimit } from './lib/ratelimit.js';
+import QRCode from 'qrcode';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -31,10 +32,25 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json({ limit: '20kb' }));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/data', express.static(path.join(__dirname, 'data')));
+// Always check for a newer file, so no one sees an outdated page after we deploy.
+const fresh = { setHeaders: (res) => res.set('Cache-Control', 'no-cache') };
+app.use(express.static(path.join(__dirname, 'public'), fresh));
+app.use('/data', express.static(path.join(__dirname, 'data'), fresh));
 
 app.get('/healthz', (req, res) => res.json({ ok: true }));
+
+// QR code for the printable card: points to the public site, generated here (no outside service).
+const PUBLIC_URL = process.env.PUBLIC_URL || 'https://wvc-ai-hackathon.onrender.com';
+let qrSvg = null;
+app.get('/qr.svg', async (req, res) => {
+  try {
+    qrSvg ??= await QRCode.toString(PUBLIC_URL, { type: 'svg', margin: 1, errorCorrectionLevel: 'M', color: { dark: '#000000', light: '#ffffff' } });
+    res.type('image/svg+xml').set('Cache-Control', 'public, max-age=86400').send(qrSvg);
+  } catch (err) {
+    console.error('qr failed:', err.message);
+    res.status(500).end();
+  }
+});
 
 app.post('/api/check', checkRateLimit, async (req, res) => {
   const text = typeof req.body?.text === 'string' ? req.body.text.trim() : '';

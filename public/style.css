@@ -169,6 +169,22 @@ textarea {
 }
 .fine-print p + p { margin-top: 0.75rem; }
 
+/* "Read it to me": a quiet, text-style control so the screen still has two main buttons */
+.read-aloud { margin-top: 0.75rem; }
+.link-button {
+  font: inherit;
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-primary);
+  background: none;
+  border: 0;
+  padding: 0.5rem 0;
+  min-height: 48px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
 /* Message text quoted back is never a link: plain, wrapped text only */
 .plain { overflow-wrap: anywhere; }
 
