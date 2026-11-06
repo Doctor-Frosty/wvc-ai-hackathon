@@ -1,0 +1,12 @@
+/* About page: same calm, large-print look as the app. */
+#about-page h1 { margin-top: 1.75rem; }
+.about-block { margin-top: 1.75rem; }
+.about-block h2 { margin: 0 0 0.5rem; }
+.about-block p + p, .about-block ul + p, .about-block p + ul { margin-top: 0.75rem; }
+.notice {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  border: 3px solid var(--color-caution);
+  background: var(--color-caution-bg);
+}
+.notice h2 { color: var(--color-caution); }

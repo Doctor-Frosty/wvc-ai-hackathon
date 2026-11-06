@@ -22,7 +22,7 @@ Only edit files your person owns. If a change is needed in someone else's file, 
 
 | Owner | Files |
 |---|---|
-| **Logan** | `server.js`, `lib/**`, `public/index.html`, `public/style.css`, `public/app.js`, `public/card.html`, `public/card.js`, `public/card.css`, `examples/**`, `package.json`, `package-lock.json`, `README.md`, `CLAUDE.md`, `OUTLINE.md`, `.gitignore`, `.gitattributes`, `.env.example` |
+| **Logan** | `server.js`, `lib/**`, `public/index.html`, `public/style.css`, `public/app.js`, `public/card.html`, `public/card.js`, `public/card.css`, `public/about.html`, `public/about.css`, `public/next.html`, `public/next.css`, `examples/**`, `package.json`, `package-lock.json`, `README.md`, `CLAUDE.md`, `OUTLINE.md`, `.gitignore`, `.gitattributes`, `.env.example` |
 | **Isabel** | `public/setup.js`, `public/setup.css`, `data/companies.json`, `notes/**`, `panel-notes.md` |
 
 New files: create them only inside your own area. Ask before adding anything elsewhere.
