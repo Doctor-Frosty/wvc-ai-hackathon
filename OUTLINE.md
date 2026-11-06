@@ -239,6 +239,7 @@ Listening to or recording calls (California all-party consent law + "store nothi
 3. **The innovation (40s):** Margaret gets a text: "Chase: your home loan payment failed, verify here." Paste it and get ⛔: "You don't bank with Chase. You don't have a home loan." Point out that the link isn't clickable.
 4. **The phone call (40s):** her "grandson" calls in a panic. Tap 🚨 **I'm on a call right now**: "It's OK to hang up" and **Call Sarah**. She taps **I hung up** and says into the box, "My grandson said he's in jail and needs gift cards and not to tell his mom," which gives ⛔.
 5. **Point out the simplicity, and paper (20s):** "Every screen has at most two buttons. And because not every senior uses technology, Sarah prints Margaret's **Second Look card** for the fridge: her bank, who to call, the three questions." Hold up a printed card.
+5b. **Number lookup (15s, optional):** paste a text with a call-back number and point to "What others report about this number" (Keenable, searches only the number).
 6. **Trust (20s):** "It stores nothing, removes personal numbers we recognize on your own device before anything is sent, can't be used to accidentally call or click a scammer, and helps families file California's DROP request to cut off scammers at the source."
 7. **Community and next steps (25s):** family sets it up, SASCC teaches it; next come Practice mode for workshops, spam-blocker guides, and forwarding by text. Close: **"A second look, before it's too late."**
 

@@ -15,7 +15,7 @@ Keys are optional. Copy `.env.example` to `.env` (UTF-8, one `NAME=value` per li
 | Variable | What it turns on | Without it |
 |---|---|---|
 | `GEMINI_API_KEY` | AI explanation and second opinion (Google Gemini) | Rules-only answers |
-| `KEENABLE_API_KEY` | Reserved for web lookups (Keenable) | Nothing changes today |
+| `KEENABLE_API_KEY` | Live lookup of phone numbers found in a message ("What others report") | No lookup section |
 | `PUBLIC_URL` | URL encoded in the QR code | `https://wvc-ai-hackathon.onrender.com` |
 | `RATE_LIMIT=off` | Disables the per-visitor limit, **for local test runs only** | 60 checks per 5 minutes per visitor |
 | `PORT` | Server port | `3000` |
@@ -36,6 +36,7 @@ Home: one box ──► redact numbers in browser ──► POST /api/check
                                                  ├─ lib/redflags.js  warning-sign rules → verdict
                                                  ├─ lib/ai.js        Gemini: explanation + second opinion
                                                  │    (lib/redact.js runs again before the call)
+                                                 ├─ lib/keenable.js  web reports about a phone number (in parallel with AI)
                                                  └─ lib/resources.js one right agency for this scam type
 Results ◄──────── { verdict, headline, reasons[≤3], steps[≤3], report, explanation, flags, ai }
 ```
@@ -62,6 +63,7 @@ Ownership avoids clashes between the two people building in parallel. See [CLAUD
 | `lib/ai.js` | Gemini call, model fallback, language handling, output cleanup | Logan |
 | `lib/redact.js` | Server-side removal of personal numbers; phone-number finder | Logan |
 | `lib/resources.js` | Agency routing text, SASCC contact | Logan |
+| `lib/keenable.js` | Phone-number lookup (number only, 4.5s timeout, 1-hour cache, .gov numbers treated as official) | Logan |
 | `lib/ratelimit.js` | In-memory per-visitor limit (hashed IP) | Logan |
 | `public/index.html`, `app.js`, `style.css` | Home, On-a-call, Results screens; shared design tokens | Logan |
 | `public/card.*` | Printable Second Look card (`/card.html`) | Logan |

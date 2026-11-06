@@ -28,12 +28,13 @@ Generic scam checkers judge a message on its own. Second Look also checks it aga
 
 ### Built for this community
 - **Simple:** no screen has more than two buttons. There's one box for both messages and calls, and you can speak instead of typing using your phone keyboard's microphone.
+- **"Learn about Second Look":** explains it in under a minute, with a short version for the person using it and a fuller one for family members.
 - **🚨 "I'm on a call right now":** a calm screen that says *"It's OK to hang up"*, with a button to call the family helper.
 - **Dementia-friendly wording:** gentle and complete every time, never assuming the person remembers using it before.
 - **Explains in your language:** a scam text in Spanish, Vietnamese, Chinese or another language gets its explanation in that same language.
 - **🔊 Read it to me** and **keyboard-only and screen-reader friendly**: real buttons and labels, results announced automatically, visible focus outline.
 - **🖨️ A printable Second Look card** in true large print (about 18pt, two pages, print double-sided) for the fridge or by the phone, with a QR code to the app, because not every senior uses technology. It's personalized from the trusted list ("My bank: Wells Fargo… I do NOT have a home loan"), or prints a general version for SASCC workshops.
-- **California support:** each result names the one agency that fits the scam type (DFPI for investment and crypto scams, Senior Medicare Patrol, the SSA Inspector General, Santa Clara County Adult Protective Services, the CA Attorney General and FTC), plus California's free **DROP** request to get fewer scam calls.
+- **California support:** each result names the one agency that fits the scam type (DFPI for investment and crypto scams, Senior Medicare Patrol, the SSA Inspector General, Santa Clara County Adult Protective Services, the CA Attorney General and FTC, 211 for local help), plus California's free **DROP** request to get fewer scam calls.
 
 ## Privacy and safety
 - **Stores nothing on the server:** no database, no accounts, no logs of what people type.
@@ -48,7 +49,8 @@ Generic scam checkers judge a message on its own. Second Look also checks it aga
 1. **Rules (always on):** 14 plain-language warning signs, including gift cards and crypto, "move your money to a safe account", requests for private numbers, remote access, secrecy, investment pitches, urgency, threats, government impersonation, family emergencies, prizes, tech support, suspicious links, and package or toll texts.
 2. **Trusted-list check:** a bank, health, utility or phone company the senior doesn't use, or an account they don't have, is a high-risk sign. Company names come from a list of 32 common companies.
 3. **AI second opinion (Google Gemini, free tier):** a short, warm explanation, and it can catch scams that have no keywords. If the AI is busy or unavailable, the rules still answer.
-4. **Scoring:** one high-risk sign, or two medium ones, gives "This looks like a scam".
+4. **Number lookup (Keenable):** if the message has a phone number, Second Look searches the web for that number only and shows what others report, as plain text. Numbers on official .gov sites are recognized as real agency numbers; two or more scam reports add a warning.
+5. **Scoring:** one high-risk sign, or two medium ones, gives "This looks like a scam".
 
 ## Run it yourself
 ```bash
@@ -57,9 +59,9 @@ npm start
 ```
 Then open http://localhost:3000.
 
-Keys are optional; without them the rules still work. To turn on the AI explanation, copy `.env.example` to `.env` and fill in `GEMINI_API_KEY` (and optionally `KEENABLE_API_KEY`). Never commit `.env`.
+Keys are optional; without them the rules still work. To turn on the AI explanation, copy `.env.example` to `.env` and fill in `GEMINI_API_KEY` (and `KEENABLE_API_KEY` for the number lookup). Never commit `.env`.
 
-**Tech:** Node.js + Express, plain HTML, CSS and JavaScript (no build step), Google Gemini, hosted on Render.
+**Tech:** Node.js + Express, plain HTML, CSS and JavaScript (no build step), Google Gemini, Keenable web search (live number lookups, and verifying every help line), hosted on Render.
 
 ## Documentation
 - **Handover brief for judges and SASCC:** a shareable page (link from the team).
@@ -74,6 +76,7 @@ Keys are optional; without them the rules still work. To turn on the AI explanat
 | `lib/ai.js` | Gemini second opinion, with model fallback |
 | `lib/redact.js` | Removes personal numbers on the server (safety net; the browser removes them first) |
 | `lib/resources.js` | California agency routing |
+| `lib/keenable.js` | Phone-number lookup with Keenable |
 | `public/` | Home, On-a-call, Results, Family setup and the printable card |
 | `data/companies.json` | Common companies for the setup picker and name detection |
 | `examples/demo-messages.json` | Fictional demo messages |
