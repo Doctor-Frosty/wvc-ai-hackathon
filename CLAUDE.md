@@ -83,6 +83,7 @@ These connection points stay fixed. Don't change them without both people agreei
 - Node 24 + Express; plain HTML, CSS and JavaScript (no build step, no frameworks).
 - Run locally: `npm install`, then `npm start`, then open http://localhost:3000
 - The app **must run without `.env`**: Gemini and Keenable turn off and the rules still work. Isabel doesn't need the keys.
+- **Strict Content Security Policy (set in `server.js`):** only our own `.js` and `.css` files can run. So: **no inline `<script>`**, **no `onclick="..."`** or other inline event attributes (use `addEventListener`), **no `style="..."` attributes** or `<style>` tags (put styles in your `.css` file; setting `element.style.x` from JS is fine), and no outside CDNs. Anything inline is silently blocked by the browser (you'll see a CSP error in the console).
 
 ## Git workflow (avoids clashes)
 1. `git pull --rebase` **before starting** and **before every push** (or set `git config pull.rebase true` once).

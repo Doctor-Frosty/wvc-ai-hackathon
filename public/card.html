@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Second Look card</title>
+  <meta name="description" content="A printable Second Look card for the fridge or by the phone.">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/card.css">
+</head>
+<body>
+  <main id="card-page">
+
+    <div class="no-print screen-tools">
+      <p class="lead">Print this card and put it on the fridge or next to the phone.</p>
+      <button type="button" id="print-button" class="btn btn-primary">🖨️ Print this card</button>
+      <p class="small-link"><a href="/">Back to start</a></p>
+    </div>
+
+    <article class="card" aria-label="Second Look card">
+      <header class="card-head">
+        <p class="card-brand">Second Look</p>
+        <h1 id="card-title">Before you do anything, take a second look.</h1>
+      </header>
+
+      <section class="card-block">
+        <h2>Ask yourself three questions</h2>
+        <ol class="card-questions">
+          <li>Did they <strong>contact me</strong> out of the blue?</li>
+          <li>Are they <strong>rushing</strong> me, or asking me to <strong>keep it secret</strong>?</li>
+          <li>Do they want <strong>gift cards, crypto, a wire transfer, cash</strong>, or my <strong>private numbers</strong>?</li>
+        </ol>
+        <p class="card-rule">If the answer to any of these is yes:<br><strong>Hang up. It's OK.</strong></p>
+      </section>
+
+      <!-- Filled in by card.js from Family setup. Hidden when there is no setup. -->
+      <section class="card-block card-personal" id="personal" hidden>
+        <h2 id="personal-title">My trusted list</h2>
+        <ul id="personal-list" class="card-list"></ul>
+      </section>
+
+      <section class="card-block">
+        <h2>Who to call</h2>
+        <ul class="card-list" id="who-to-call">
+          <li id="helper-line" hidden></li>
+          <li>SASCC (Successful Aging Solutions): <span class="write-in">____________________</span></li>
+          <li>Medicare scams: Senior Medicare Patrol, <strong>(855) 613-7080</strong></li>
+          <li>Scams and fraud: California Attorney General, <strong>(800) 952-5225</strong></li>
+          <li>Money taken from a senior: Santa Clara County Adult Protective Services, any time, <strong>(408) 975-4900</strong></li>
+          <li>Someone in danger: <strong>911</strong></li>
+        </ul>
+      </section>
+
+      <section class="card-block card-two">
+        <div>
+          <h2>Get fewer scam calls</h2>
+          <p>California's free DROP request tells over 500 data brokers to delete your information: <strong>privacy.ca.gov/drop</strong></p>
+          <p>Do Not Call Registry: <strong>1-888-382-1222</strong></p>
+        </div>
+        <div>
+          <h2>Our family code word</h2>
+          <p class="code-word" aria-label="Write your family code word here">______________</p>
+          <p class="small">If a caller says they're family, ask for the code word. Write it by hand. Never type it into a phone or computer.</p>
+        </div>
+      </section>
+
+      <footer class="card-foot">
+        Check a message online: <strong>wvc-ai-hackathon.onrender.com</strong>
+      </footer>
+    </article>
+
+  </main>
+  <script src="/card.js" defer></script>
+</body>
+</html>
