@@ -6,6 +6,12 @@ Why this file is in `notes/`: Isabel may only edit her own files. Every change b
 ## For Logan's Claude agent
 Read this whole file. **Ask Logan to confirm before editing anything.** If he says yes, build it, test it, and commit only the files you edited. Final copy is below, so you don't need to write any of the wording.
 
+## Update: `public/about.html` already exists
+While this was being written, Logan added `public/about.html` ("About Second Look", linked from the bottom of Home). It is one page for everyone. This request builds on it and **does not replace it**: the difference is the **audience choice** (person using it vs family member) and the **link at the top of Home**. Suggestions, Logan's call:
+- Reuse `about.html`'s wording where it matches (the privacy and "guidance, not a guarantee" blocks are good), and keep its SASCC and hotline numbers.
+- Either turn the choice and two screens below into the new top-of-Home flow and have the bottom link point to the same place, or keep `about.html` as the long version and link to it from the family screen ("Read more").
+- The privacy copy below must stay consistent with `about.html`, which also says the message (without personal numbers) is sent to Google's Gemini AI to explain the answer. The family privacy text below now says so too.
+
 ## The request
 A small link at the top of Home, **"Learn about Second Look"**, that opens a three-screen flow:
 
@@ -58,7 +64,7 @@ Goal: someone seeing the tool for the first time (a senior, a family member, a j
   3. Tap **Save**.
   (Want to look around first? Tap **Use example setup** on that page.)
 - **h2:** Privacy
-  Everything you fill in stays on that device. We don't keep a copy and we don't save what they check. We never ask for account numbers. We remove personal numbers we recognize, like Social Security and bank numbers, before checking.
+  Everything you fill in stays on that device. We don't keep a copy and we don't save what they check. We never ask for account numbers. We remove personal numbers we recognize, like Social Security and bank numbers, before checking. To explain its answer, Second Look sends the message, without those numbers, to Google's Gemini AI.
 - **h2:** What it will not do
   It never listens to or records calls. It never makes a link or a number from a message tappable, and it cannot send, reply or pay. The only call buttons dial the helper you chose, SASCC, or official numbers we provide. It gives guidance, not a guarantee, so the answer is never "safe". The best answer is "No warning signs found".
 - **h2:** Good to know
