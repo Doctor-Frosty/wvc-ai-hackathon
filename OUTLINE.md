@@ -40,6 +40,35 @@ Checking tools like this already exist (AARP, Norton Genie, Scamio). Practice mo
 3. Instant feedback highlights the red flags in the message, with a one-line lesson.
 4. At the end: a score plus "Your top 3 things to remember."
 
+### Accessibility: a core requirement, not polish
+Built for seniors first. Every screen must pass these checks:
+
+**Large print**
+- Body text at least **20px**, headings 32px or more, buttons 24px. Text scales with browser zoom up to 200% without breaking the layout.
+- Comfortable line spacing (1.6) and short lines (about 60 characters max).
+- A clear, simple font (system sans-serif). No thin weights, all caps or italics for body text.
+
+**High contrast**
+- Text contrast of at least **7:1** (WCAG AAA): near-black on white by default.
+- Verdict colors are never the only signal. Each one also has an **icon + word**: ⛔ "Likely scam", ⚠️ "Be careful", ✅ "No warning signs found". This works for color-blind users.
+- A visible focus outline (thick, high contrast) for keyboard users.
+
+**Very basic, intuitive layout**
+- **One thing per screen, one column, one main action.** No sidebars, carousels, pop-ups or auto-playing anything.
+- **Huge targets:** buttons at least 56px tall and full width on phones.
+- **Plain words, no jargon:** "Check this message", not "Analyze". Say "link", not "URL", and "Is this a scam?", not "Threat assessment".
+- Always-visible labels; no placeholder-only inputs or icon-only buttons.
+- A big **"Start over"** button on every result; no dead ends.
+- No time limits. Practice mode never rushes the user.
+- Results lead with the answer first, then why, then what to do.
+
+**Assistive tech**
+- Semantic HTML (real `<button>`, `<label>`, headings in order) so screen readers work.
+- Results announced to screen readers (`aria-live`).
+- Stretch: 🔊 "Read it to me" button using the browser's built-in speech.
+
+**Pitch line:** "Designed with seniors, for seniors: large print, high contrast, one button per screen, and plain everyday words."
+
 ## 5. How it works
 
 **Approach: 3 layers, so the demo never breaks.**
@@ -101,7 +130,7 @@ README.md             problem, solution, how to run, team
 - [ ] Red-flag rules with plain-language explanations
 - [ ] "What to do now" checklist and "Report it" links
 - [ ] Keenable "Others have reported this" lookup
-- [ ] Large-print, accessible design
+- [ ] Large-print, high-contrast, one-column accessible design (see the accessibility section)
 - [ ] 3 to 4 example scams with one-click "Try an example" buttons, for a reliable demo
 - [ ] **Practice mode** with about 8 scenarios, Scam/Safe answers, feedback and a score
 - [ ] **AI explanation layer** (Gemini free tier) with rule-based fallback
