@@ -32,6 +32,16 @@
 }
 .card-rule strong { font-size: 1.875rem; }
 
+.card-friendly {
+  border: 3px solid var(--color-caution);
+  border-radius: var(--radius);
+  background: var(--color-caution-bg);
+  color: var(--color-caution);
+  padding: 0.75rem 1rem;
+}
+.card-friendly p + p { margin-top: 0.4rem; }
+.card-examples { font-style: italic; font-weight: 700; }
+
 .card-personal {
   border: 3px dashed var(--color-text);
   border-radius: var(--radius);
@@ -85,5 +95,6 @@
   .card-foot { break-inside: avoid; }
   .card-rule { background: #fff; color: #000; border-color: #000; margin-top: 0.6rem; padding: 0.5rem 0.9rem; }
   .card-personal { padding: 0.6rem 0.9rem; }
+  .card-friendly { background: #fff; color: #000; border-color: #000; border-style: dashed; padding: 0.6rem 0.9rem; }
   .card-list li + li, .card-questions li + li { margin-top: 0.2rem; }
 }
