@@ -1,4 +1,6 @@
-# Project Outline: "Is This a Scam?" (working name)
+# Project Outline: Second Look
+
+**Tagline:** "Check it before you trust it."
 
 **Event:** West Valley College AI for Social Good Hackathon, Fri Nov 6, 2026
 **Track:** Senior Fraud and Scams, with SASCC (Successful Aging Solutions & Community Consulting)
@@ -265,7 +267,7 @@ Claude prepares the draft; **Logan does the final submit.**
 
 ## 12. Open questions
 
-- [ ] Final project name?
+- [x] Final project name: **Second Look**
 - [ ] Will someone get a free Gemini API key (aistudio.google.com, about 2 minutes, Google account) and add it to `.env` as `GEMINI_API_KEY`?
 - [ ] Who has, or will create, a hosting account (Render, Railway or Vercel)?
 - [ ] Does SASCC have a phone number or website to include under "Report it" or "Get help"?

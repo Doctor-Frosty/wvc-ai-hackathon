@@ -7,7 +7,7 @@ Two people build this repo at the same time, each with their own Claude Code ses
 Read `OUTLINE.md` first. It is the plan: product, priorities (P0 to P3), time blocks and demo script.
 
 ## Project in one line
-"Is This a Scam?" (working name): an accessible web app for seniors (WVC AI for Social Good Hackathon, SASCC track). The **Checker** explains whether a pasted message looks like a scam and what to do. **Practice mode** ("Spot the Scam") trains people to recognize scams before they happen.
+**Second Look** ("Check it before you trust it."): an accessible web app for seniors (WVC AI for Social Good Hackathon, SASCC track). The **Checker** explains whether a pasted message looks like a scam and what to do. **Practice mode** ("Spot the Scam") trains people to recognize scams before they happen.
 
 ## File ownership (most important rule)
 Only edit files your person owns. If a change is needed in someone else's file, **stop and tell your person** so they can coordinate. Don't make the edit yourself.
