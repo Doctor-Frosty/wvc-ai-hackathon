@@ -7,6 +7,7 @@ import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { checkText } from './lib/check.js';
+import { checkRateLimit } from './lib/ratelimit.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 const MAX_TEXT = 2000;
 
 app.disable('x-powered-by');
+app.set('trust proxy', 1); // Render puts one proxy in front of us; needed to tell visitors apart
 
 // Basic safety headers. The CSP only allows our own scripts and styles,
 // so nothing pasted into the page can ever load or run outside code.
@@ -34,7 +36,7 @@ app.use('/data', express.static(path.join(__dirname, 'data')));
 
 app.get('/healthz', (req, res) => res.json({ ok: true }));
 
-app.post('/api/check', async (req, res) => {
+app.post('/api/check', checkRateLimit, async (req, res) => {
   const text = typeof req.body?.text === 'string' ? req.body.text.trim() : '';
   if (!text) {
     return res.status(400).json({ error: 'Please paste the message, or type what the caller said.' });
