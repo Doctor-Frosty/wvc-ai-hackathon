@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Second Look</title>
+  <meta name="description" content="Check it before you trust it. A second opinion on a suspicious call or message.">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/setup.css">
+</head>
+<body>
+  <main id="app">
+
+    <!-- HOME: one box, one button, one emergency button -->
+    <section id="home" class="screen" aria-labelledby="home-title">
+      <p class="brand">Second Look</p>
+      <h1 id="home-title"><span id="greeting">Hello.</span> What happened?</h1>
+
+      <form id="check-form" novalidate>
+        <label for="check-text" class="big-label">Paste the message, or type what the caller said.</label>
+        <p class="note" id="privacy-note">
+          Please leave out your Social Security, Medicare, bank and card numbers.
+          We don't save what you share.
+        </p>
+        <textarea id="check-text" rows="7" maxlength="2000" aria-describedby="privacy-note check-error"
+          placeholder=""></textarea>
+        <p id="check-error" class="error" role="alert" hidden></p>
+        <button type="submit" id="check-button" class="btn btn-primary">Check it</button>
+      </form>
+
+      <button type="button" id="oncall-button" class="btn btn-urgent">🚨 I'm on a call right now</button>
+
+      <p class="small-link"><a href="#setup" id="setup-link">Family setup</a></p>
+    </section>
+
+    <!-- ON A CALL RIGHT NOW: calm, two buttons -->
+    <section id="oncall" class="screen" aria-labelledby="oncall-title" hidden>
+      <h1 id="oncall-title" tabindex="-1">It's OK to hang up.</h1>
+      <p class="lead">Real banks and government offices never mind if you hang up and call them back.</p>
+      <ul class="steps">
+        <li><strong>Don't</strong> give any numbers, buy gift cards, send money, or press keys they tell you to.</li>
+        <li><strong>Call back</strong> on a number you look up yourself, from your card or bill. Never use a number they gave you.</li>
+        <li>If they say a family member is in trouble, <strong>hang up and call that person directly</strong>.</li>
+      </ul>
+      <a id="call-helper" class="btn btn-primary" href="#" hidden>Call</a>
+      <button type="button" id="hungup-button" class="btn btn-secondary">I hung up</button>
+    </section>
+
+    <!-- RESULTS: the answer first, one button -->
+    <section id="results" class="screen" aria-labelledby="verdict-title" hidden>
+      <div id="verdict" class="verdict" role="status" aria-live="polite">
+        <span id="verdict-icon" class="verdict-icon" aria-hidden="true"></span>
+        <h1 id="verdict-title" tabindex="-1"></h1>
+      </div>
+
+      <p id="explanation" class="lead" hidden></p>
+
+      <h2>Why</h2>
+      <ul id="reasons" class="reasons"></ul>
+
+      <h2>What to do now</h2>
+      <ol id="steps" class="steps"></ol>
+
+      <div class="fine-print">
+        <p id="report-line">You can report scams to the FTC at reportfraud.ftc.gov.</p>
+        <p>
+          <strong>Get fewer scam calls (California):</strong> scammers often buy your details from data brokers.
+          One free request tells over 500 of them to delete your information: privacy.ca.gov/drop.
+          A family member or SASCC can help.
+        </p>
+        <p>This tool gives guidance, not a guarantee. If you're unsure, call someone you trust.</p>
+      </div>
+
+      <button type="button" id="startover-button" class="btn btn-primary">Start over</button>
+    </section>
+
+    <!-- FAMILY SETUP: built by Isabel in setup.js / setup.css -->
+    <section id="setup" class="screen" aria-label="Family setup" hidden></section>
+    <p class="small-link" id="setup-back" hidden><a href="#home">Back to start</a></p>
+
+  </main>
+
+  <script src="/setup.js" defer></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>
