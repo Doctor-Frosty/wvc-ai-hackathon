@@ -45,3 +45,9 @@ Run everything with `node notes/run-scam-tests.mjs`. Rules-only server (no Gemin
 - Trusted-list cases work: Verizon, BofA (by its alias), a car loan and an investment statement all get ⛔ for Margaret.
 
 Priority suggestion: fix the three false-alarm patterns (Venmo/Zelle, PIN or password in a warning, verification codes you are *given*), then the "read me the code" and "Green Dot" misses. The rest can wait or go on the Next Steps slide.
+
+---
+
+# Wording to check for the demo (found while building `notes/demo-test-list.md`)
+- **Grandson call (demo step 4):** `My grandson called. He said he was in a car accident and is in jail and needs $2,000 in gift cards for bail. He said please don't tell his mom.` fires `payment`, `secrecy`, `threat` and `family_emergency`. Only three reasons are shown, so the person sees "It threatens you with arrest, jail, a lawsuit, or a fine. Real government offices send letters first..." and **not** "It says a family member is in trouble...". The threat line reads wrong for this story, since nobody is threatening her. Idea: don't fire `threat` when `family_emergency` matched, or order `family_emergency` ahead of `threat` when picking the top three reasons.
+- **With Margaret's profile, an Amazon order scam shows as ⛔ and without a profile it shows as ⚠️:** a company not on her list adds a flag. That is the intended behavior, just worth knowing before a judge asks.
