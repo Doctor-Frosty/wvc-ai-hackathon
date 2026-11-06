@@ -138,6 +138,31 @@
 
     if (result.report) $('report-line').textContent = String(result.report);
 
+    // Keenable: what others report about the phone number (plain text, never links).
+    const lookup = result.lookup;
+    const lookupBox = $('lookup');
+    if (lookup && lookup.number) {
+      $('lookup-number').textContent = String(lookup.number);
+      const reports = Array.isArray(lookup.reports) ? lookup.reports.slice(0, 3) : [];
+      $('lookup-list').replaceChildren(
+        ...reports.map((r) => {
+          const li = document.createElement('li');
+          const title = document.createElement('span');
+          title.textContent = String(r.title || '');
+          const site = document.createElement('span');
+          site.className = 'lookup-site';
+          site.textContent = r.site ? String(r.site) : '';
+          li.append(title, site);
+          return li;
+        })
+      );
+      $('lookup-none').hidden = reports.length > 0;
+      $('lookup-official').hidden = !lookup.official;
+      lookupBox.hidden = false;
+    } else {
+      lookupBox.hidden = true;
+    }
+
     // After a warning, the most helpful next step is talking to someone trusted.
     applyProfile();
     const call = $('results-call');

@@ -287,6 +287,13 @@ textarea {
 .todo-box h2 { margin-top: 0; }
 .todo-box .steps li { font-weight: 700; }
 
+/* Keenable: what others report about the number (plain text only) */
+.lookup { margin-top: 1.5rem; padding: 1rem 1.1rem; border: 2px solid #c9d2e3; border-radius: var(--radius); background: #f8fafd; }
+.lookup h2 { margin-top: 0; font-size: 1.375rem; }
+.lookup-list { margin: 0.5rem 0 0.75rem; padding-left: 1.25rem; display: grid; gap: 0.6rem; }
+.lookup-list li { overflow-wrap: anywhere; }
+.lookup-site { display: block; font-size: var(--text-small); color: var(--color-muted); }
+
 /* Gentle note when personal numbers were removed */
 .removed-note {
   margin-top: 0.75rem;
