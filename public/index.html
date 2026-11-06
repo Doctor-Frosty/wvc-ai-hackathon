@@ -18,7 +18,17 @@
 
     <!-- HOME: one box, one button, one emergency button -->
     <section id="home" class="screen" aria-labelledby="home-title">
-      <p class="brand">Second Look</p>
+      <header class="app-header">
+        <img src="/icons/icon-192.png" alt="" width="48" height="48" class="app-icon">
+        <div>
+          <p class="app-name">Second Look</p>
+          <p class="app-tagline">Check it before you trust it.</p>
+        </div>
+      </header>
+
+      <!-- The most urgent case comes first, so no one has to scroll during a call. -->
+      <button type="button" id="oncall-button" class="btn btn-urgent">🚨 I'm on a call right now</button>
+
       <h1 id="home-title"><span id="greeting">Hello.</span> What happened?</h1>
 
       <form id="check-form" novalidate>
@@ -27,13 +37,16 @@
           Please leave out your Social Security, Medicare, bank and card numbers.
           We don't save what you share.
         </p>
-        <textarea id="check-text" rows="7" maxlength="2000" aria-describedby="privacy-note check-error"
+        <textarea id="check-text" rows="7" maxlength="2000" aria-describedby="privacy-note mic-tip check-error"
           placeholder=""></textarea>
+        <p class="note tip" id="mic-tip">Tip: tap the 🎤 on your keyboard to speak instead of typing.</p>
         <p id="check-error" class="error" role="alert" hidden></p>
         <button type="submit" id="check-button" class="btn btn-primary">Check it</button>
+        <p id="checking" class="checking" role="status" aria-live="polite" hidden>
+          <span class="checking-dot" aria-hidden="true"></span>
+          Taking a second look… this takes a few seconds.
+        </p>
       </form>
-
-      <button type="button" id="oncall-button" class="btn btn-urgent">🚨 I'm on a call right now</button>
 
       <p class="small-link"><a href="#setup" id="setup-link">Family setup</a></p>
     </section>

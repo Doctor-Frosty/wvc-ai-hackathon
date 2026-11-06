@@ -181,7 +181,8 @@
     }
 
     button.disabled = true;
-    button.textContent = 'Checking… this takes a few seconds';
+    button.textContent = 'Checking…';
+    $('checking').hidden = false;
     try {
       const res = await fetch('/api/check', {
         method: 'POST',
@@ -197,6 +198,7 @@
     } finally {
       button.disabled = false;
       button.textContent = 'Check it';
+      $('checking').hidden = true;
     }
   }
 
