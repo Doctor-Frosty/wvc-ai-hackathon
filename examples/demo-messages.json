@@ -1,0 +1,35 @@
+{
+  "note": "Fictional demo inputs for the live demo and for testing. Names, numbers and links are made up.",
+  "examples": [
+    {
+      "id": "chase-home-loan",
+      "expect": "scam",
+      "text": "Chase Alert: Your home loan payment failed. Your account will be suspended within 24 hrs. Verify your account at chase-secure-pay.co/verify"
+    },
+    {
+      "id": "grandson-call",
+      "expect": "scam",
+      "text": "My grandson called. He said he was in a car accident and is in jail and needs $2,000 in gift cards for bail. He said please don't tell his mom."
+    },
+    {
+      "id": "medicare-card-text",
+      "expect": "scam",
+      "text": "MEDICARE: Your new card is on hold. Confirm your Medicare number today or lose coverage. Call 408-555-0199."
+    },
+    {
+      "id": "investment-friend",
+      "expect": "scam",
+      "text": "Hi dear, I made so much this month with my crypto trading platform. It's guaranteed returns, you could double your money by Christmas!"
+    },
+    {
+      "id": "pharmacy-ready",
+      "expect": "ok",
+      "text": "Hi Margaret, this is Linda from the pharmacy. Your prescription is ready for pickup. We're open until 7 tonight. See you soon!"
+    },
+    {
+      "id": "lunch-plans",
+      "expect": "ok",
+      "text": "Hi Mom, are we still on for lunch Sunday? I can pick you up at noon."
+    }
+  ]
+}
