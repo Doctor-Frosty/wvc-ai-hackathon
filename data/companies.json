@@ -1,42 +1,268 @@
 {
   "companies": [
-    { "name": "Chase", "category": "bank", "aliases": ["JPMorgan Chase", "Chase Bank", "JP Morgan"] },
-    { "name": "Bank of America", "category": "bank", "aliases": ["BofA", "BoA", "Bank of America Merrill Lynch"] },
-    { "name": "Wells Fargo", "category": "bank", "aliases": ["Wells Fargo Bank", "WellsFargo"] },
-    { "name": "Citibank", "category": "bank", "aliases": ["Citi", "Citigroup"] },
-    { "name": "U.S. Bank", "category": "bank", "aliases": ["US Bank", "USBank"] },
-    { "name": "Capital One", "category": "bank", "aliases": ["CapitalOne"] },
-    { "name": "American Express", "category": "bank", "aliases": ["Amex"] },
-    { "name": "Fidelity", "category": "bank", "aliases": ["Fidelity Investments"] },
-    { "name": "Charles Schwab", "category": "bank", "aliases": ["Schwab"] },
-    { "name": "PayPal", "category": "bank", "aliases": ["Pay Pal"] },
-    { "name": "Zelle", "category": "bank", "aliases": ["Zelle Pay", "Zelle payment"] },
-
-    { "name": "Kaiser Permanente", "category": "health", "aliases": ["Kaiser", "Kaiser Health", "KP"] },
-    { "name": "Sutter Health", "category": "health", "aliases": ["Sutter"] },
-    { "name": "Blue Shield of California", "category": "health", "aliases": ["Blue Shield", "Blue Shield CA"] },
-    { "name": "Humana", "category": "health", "aliases": ["Humana Medicare"] },
-    { "name": "UnitedHealthcare", "category": "health", "aliases": ["United Healthcare", "UHC", "United Health"] },
-
-    { "name": "PG&E", "category": "utility", "aliases": ["PG and E", "PGE", "Pacific Gas and Electric", "Pacific Gas & Electric"] },
-    { "name": "San Jose Water", "category": "utility", "aliases": ["San Jose Water Company", "SJW"] },
-
-    { "name": "AT&T", "category": "phone", "aliases": ["ATT", "AT and T", "AT&T Wireless"] },
-    { "name": "Verizon", "category": "phone", "aliases": ["Verizon Wireless", "Verizon Fios", "Fios"] },
-    { "name": "T-Mobile", "category": "phone", "aliases": ["TMobile", "T Mobile", "Sprint"] },
-    { "name": "Comcast Xfinity", "category": "phone", "aliases": ["Comcast", "Xfinity"] },
-
-    { "name": "Amazon", "category": "shopping", "aliases": ["Amazon Prime", "Amazon.com", "AMZN"] },
-    { "name": "Walmart", "category": "shopping", "aliases": ["Wal-Mart", "Walmart.com"] },
-    { "name": "Costco", "category": "shopping", "aliases": ["Costco Wholesale"] },
-    { "name": "Best Buy", "category": "shopping", "aliases": ["BestBuy", "Geek Squad"] },
-
-    { "name": "USPS", "category": "delivery", "aliases": ["U.S. Postal Service", "US Postal Service", "United States Postal Service", "Postal Service"] },
-    { "name": "UPS", "category": "delivery", "aliases": ["United Parcel Service"] },
-    { "name": "FedEx", "category": "delivery", "aliases": ["Fed Ex", "Federal Express"] },
-
-    { "name": "Apple", "category": "tech", "aliases": ["Apple ID", "iCloud", "iTunes", "Apple Support"] },
-    { "name": "Microsoft", "category": "tech", "aliases": ["Windows", "Microsoft Support", "Outlook", "Office 365"] },
-    { "name": "Google", "category": "tech", "aliases": ["Gmail", "Google Support", "Google Account"] }
+    {
+      "name": "Chase",
+      "category": "bank",
+      "aliases": [
+        "JPMorgan Chase",
+        "Chase Bank",
+        "JP Morgan"
+      ]
+    },
+    {
+      "name": "Bank of America",
+      "category": "bank",
+      "aliases": [
+        "BofA",
+        "BoA",
+        "Bank of America Merrill Lynch"
+      ]
+    },
+    {
+      "name": "Wells Fargo",
+      "category": "bank",
+      "aliases": [
+        "Wells Fargo Bank",
+        "WellsFargo"
+      ]
+    },
+    {
+      "name": "Citibank",
+      "category": "bank",
+      "aliases": [
+        "Citi",
+        "Citigroup"
+      ]
+    },
+    {
+      "name": "U.S. Bank",
+      "category": "bank",
+      "aliases": [
+        "US Bank",
+        "USBank"
+      ]
+    },
+    {
+      "name": "Capital One",
+      "category": "bank",
+      "aliases": [
+        "CapitalOne"
+      ]
+    },
+    {
+      "name": "American Express",
+      "category": "bank",
+      "aliases": [
+        "Amex"
+      ]
+    },
+    {
+      "name": "Fidelity",
+      "category": "bank",
+      "aliases": [
+        "Fidelity Investments"
+      ]
+    },
+    {
+      "name": "Charles Schwab",
+      "category": "bank",
+      "aliases": [
+        "Schwab"
+      ]
+    },
+    {
+      "name": "PayPal",
+      "category": "bank",
+      "aliases": [
+        "Pay Pal"
+      ]
+    },
+    {
+      "name": "Zelle",
+      "category": "bank",
+      "aliases": [
+        "Zelle Pay",
+        "Zelle payment"
+      ]
+    },
+    {
+      "name": "Kaiser Permanente",
+      "category": "health",
+      "aliases": [
+        "Kaiser",
+        "Kaiser Health",
+        "KP"
+      ]
+    },
+    {
+      "name": "Sutter Health",
+      "category": "health",
+      "aliases": [
+        "Sutter"
+      ]
+    },
+    {
+      "name": "Blue Shield of California",
+      "category": "health",
+      "aliases": [
+        "Blue Shield",
+        "Blue Shield CA"
+      ]
+    },
+    {
+      "name": "Humana",
+      "category": "health",
+      "aliases": [
+        "Humana Medicare"
+      ]
+    },
+    {
+      "name": "UnitedHealthcare",
+      "category": "health",
+      "aliases": [
+        "United Healthcare",
+        "UHC",
+        "United Health"
+      ]
+    },
+    {
+      "name": "PG&E",
+      "category": "utility",
+      "aliases": [
+        "PG and E",
+        "PGE",
+        "Pacific Gas and Electric",
+        "Pacific Gas & Electric"
+      ]
+    },
+    {
+      "name": "San Jose Water",
+      "category": "utility",
+      "aliases": [
+        "San Jose Water Company",
+        "SJW"
+      ]
+    },
+    {
+      "name": "AT&T",
+      "category": "phone",
+      "aliases": [
+        "ATT",
+        "AT and T",
+        "AT&T Wireless"
+      ]
+    },
+    {
+      "name": "Verizon",
+      "category": "phone",
+      "aliases": [
+        "Verizon Wireless",
+        "Verizon Fios",
+        "Fios"
+      ]
+    },
+    {
+      "name": "T-Mobile",
+      "category": "phone",
+      "aliases": [
+        "TMobile",
+        "T Mobile",
+        "Sprint"
+      ]
+    },
+    {
+      "name": "Comcast Xfinity",
+      "category": "phone",
+      "aliases": [
+        "Comcast",
+        "Xfinity"
+      ]
+    },
+    {
+      "name": "Amazon",
+      "category": "shopping",
+      "aliases": [
+        "Amazon Prime",
+        "Amazon.com",
+        "AMZN"
+      ]
+    },
+    {
+      "name": "Walmart",
+      "category": "shopping",
+      "aliases": [
+        "Wal-Mart",
+        "Walmart.com"
+      ]
+    },
+    {
+      "name": "Costco",
+      "category": "shopping",
+      "aliases": [
+        "Costco Wholesale"
+      ]
+    },
+    {
+      "name": "Best Buy",
+      "category": "shopping",
+      "aliases": [
+        "BestBuy",
+        "Geek Squad"
+      ]
+    },
+    {
+      "name": "USPS",
+      "category": "delivery",
+      "aliases": [
+        "U.S. Postal Service",
+        "US Postal Service",
+        "United States Postal Service",
+        "Postal Service"
+      ]
+    },
+    {
+      "name": "UPS",
+      "category": "delivery",
+      "aliases": [
+        "United Parcel Service"
+      ]
+    },
+    {
+      "name": "FedEx",
+      "category": "delivery",
+      "aliases": [
+        "Fed Ex",
+        "Federal Express"
+      ]
+    },
+    {
+      "name": "Apple",
+      "category": "tech",
+      "aliases": [
+        "Apple ID",
+        "iCloud",
+        "iTunes",
+        "Apple Support"
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "category": "tech",
+      "aliases": [
+        "Windows",
+        "Microsoft Support",
+        "Outlook",
+        "Office 365"
+      ]
+    },
+    {
+      "name": "Google",
+      "category": "tech",
+      "aliases": [
+        "Gmail",
+        "Google Support",
+        "Google Account"
+      ]
+    }
   ]
 }
