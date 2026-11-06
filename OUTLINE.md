@@ -33,6 +33,7 @@ Every feature below must serve this one story. Anything that doesn't goes to "Ne
 | **Almost impossible to accidentally do harm** | Nothing from a pasted message is ever clickable; only trusted numbers can be called |
 | **CA privacy / DROP program** | Every warning result and the family setup point to California's free DROP data-broker deletion |
 | Innovation, serving the community, clear narrative | Personal trusted list; family + SASCC as the support network; one problem → one solution |
+| **SASCC judge: "Not every senior is technologically adept"** | A printable, personalized **Second Look card** for the fridge or by the phone: the same advice on paper |
 
 ## 3. The screens
 
@@ -72,6 +73,19 @@ Filled in once by a family member on the senior's phone or tablet:
 **Keep it simple here too:** one scrolling page of checkboxes and short fields, one big **"Save"** button. "Use example setup" (loads a demo profile, "Margaret") and "Delete everything" are small text links at the bottom.
 
 **Privacy:** saved **only in this device's browser**, never on our server. No account numbers, ever.
+
+### 🖨️ The Second Look card: the offline version
+Not every senior uses technology, so Second Look also works **on paper**. A one-page, large-print card to print and put on the fridge or by the phone, opened from a **"Print a card for the fridge"** link in Family setup (page: `/card.html`).
+- **Before you do anything, take a second look.** Three questions:
+  1. Did they **contact you** out of the blue?
+  2. Are they **rushing** you, or asking you to **keep it secret**?
+  3. Do they want **gift cards, crypto, a wire transfer, cash**, or your **private numbers**?
+  **If yes to any: hang up. It's OK.**
+- **Personalized from Family setup:** "Your bank is **Wells Fargo**. If anyone else says they're your bank, it's a scam." "You don't have a home loan." "**Call Sarah first:** (408) 555-0123."
+- **Who to call:** SASCC, Senior Medicare Patrol (855) 613-7080, the CA Attorney General (800) 952-5225, and 911 if anyone is in danger. **Fewer scam calls:** privacy.ca.gov/drop.
+- **Our family code word:** a blank line to write it by hand (never typed into the app).
+- **No profile set up?** It prints a general version that SASCC can hand out at workshops.
+- **Privacy:** built in the browser from the saved profile. Nothing is sent to the server.
 
 ### California support: one right agency per scam type
 The panel asked how to include California's multi-agency fraud support. The results screen shows **only the one agency that fits the scam type** the rules detected, as plain, non-clickable text. Contacts verified 2026-11-06 via Keenable from official sites:
@@ -143,6 +157,8 @@ lib/resources.js       report links, SASCC, DROP text (Logan)
 public/index.html      all screens; app.js switches between them (Logan)
 public/style.css       shared accessible design tokens (Logan)
 public/app.js          Home, On-a-call, Results (Logan)
+public/card.html       printable Second Look card, filled from the profile (Logan)
+public/card.js         fills the card from localStorage (Logan)
 public/setup.js        Family setup screen (Isabel)
 public/setup.css       Family setup styles (Isabel)
 data/companies.json    common companies for the setup picker + brand detection (Isabel)
@@ -155,8 +171,10 @@ data/companies.json    common companies for the setup picker + brand detection (
 - [ ] Home (one box, "Check it", 🚨 button), "On a call right now", results with the DROP tip
 - [ ] Family setup with "Use example setup", plus the trusted-list check
 - [ ] Gemini explanation with fallback
+- [ ] Printable Second Look card (personalized from Family setup)
 - [ ] Keenable number lookup, demo examples, rate limit
-- [ ] Deployed at a public URL, README
+- [x] Deployed at a public URL: https://wvc-ai-hackathon.onrender.com
+- [ ] README
 
 ### Next steps with SASCC (pitch slide, not built today)
 - **Practice mode** ("Spot the Scam") for SASCC workshops
@@ -172,7 +190,7 @@ Listening to or recording calls (California all-party consent law + "store nothi
 
 | | Logan (with Claude Code) | Isabel (with Claude Code) |
 |---|---|---|
-| **Builds** | Server, rules, trusted-list check, redaction, Gemini, Keenable, Home, On-a-call, Results, shared styles, deployment | **Family setup** (the innovation): setup screen, companies list, saving the trusted list, example profile, DROP checklist item |
+| **Builds** | Server, rules, trusted-list check, redaction, Gemini, Keenable, Home, On-a-call, Results, **printable card**, shared styles, deployment | **Family setup** (the innovation): setup screen, companies list, saving the trusted list, example profile, DROP checklist item, **"Print a card for the fridge" link** |
 | **Pitch** | Drives the live demo | Opens with the problem and District 5, **presents the innovation** (family setup), closes with community and next steps |
 | **Submission** | Reviews and clicks Submit | Supplies team details |
 
@@ -183,9 +201,9 @@ Listening to or recording calls (California all-party consent law + "store nothi
 | Priority | What |
 |---|---|
 | **P0: no demo without it** | Section 4 rules · Home · On-a-call screen · check + results (with DROP) · **trusted-list check + Family setup with "Use example setup"** · deployed URL |
-| **P1: makes it strong** | Gemini explanation · simplicity pass (remove anything extra) |
-| **P2: polish** | Keenable number lookup · demo examples · rate limit · README |
-| **P3: only if ahead** | Read-aloud · installable app |
+| **P1: makes it strong** | Gemini explanation · **printable Second Look card** (asked for by the SASCC judge) · simplicity pass |
+| **P2: polish** | Rate limit · README |
+| **P3: only if ahead** | Keenable number lookup · read-aloud · installable app |
 
 **Cut line:** at **1:15**, anything in P2 or P3 not started is dropped.
 
@@ -194,10 +212,11 @@ Listening to or recording calls (California all-party consent law + "store nothi
 |---|---|---|
 | 11:45 to 12:00 | P0 | Skeleton: server, Home / On-a-call / Results shells, shared styles, empty `#setup`. **Push** |
 | 12:00 to 12:30 | P0 | Redaction + rules (with investment and call scripts) + check + results (with DROP) + On-a-call screen |
-| 12:30 to 12:45 | P0 | **Deploy early** to Render |
-| 12:45 to 1:05 | P0 | Trusted-list check reading the profile |
-| 1:05 to 1:20 | P1 | Gemini explanation with fallback |
-| 1:20 to 1:30 | P2 | Keenable number lookup, demo examples, rate limit |
+| ✅ 11:50 | P0 | **Deployed** to Render (done early) |
+| 12:00 to 12:25 | P0 | Trusted-list check reading the profile |
+| 12:25 to 12:50 | P1 | **Printable Second Look card** (`/card.html`) |
+| 12:50 to 1:10 | P1 | Gemini explanation with fallback |
+| 1:10 to 1:30 | P2/P3 | Rate limit; Keenable number lookup only if time allows |
 | 1:30 to 1:45 | — | Merge, redeploy, accessibility check (200% zoom, keyboard, phone) |
 | 1:45 to 2:00 | — | **Freeze.** README, rehearse |
 | 2:00 to 2:15 | — | Submission draft (Logan submits), wake up the site |
@@ -206,7 +225,7 @@ Listening to or recording calls (California all-party consent law + "store nothi
 | Time | Pri | Block |
 |---|---|---|
 | 11:45 to 12:15 | P0 | `data/companies.json` (about 30 common companies by category, with name variants). **Push** |
-| 12:15 to 1:15 | P0 | Family setup screen: form, save/load the profile, "Use example setup", "Delete everything", DROP checklist |
+| 12:15 to 1:15 | P0 | Family setup screen: form, save/load the profile, "Use example setup", "Delete everything", DROP checklist, "Print a card for the fridge" link |
 | 1:15 to 1:30 | — | Test together with Logan |
 | 1:30 to 1:45 | — | Backup screenshots or screen recording |
 | 1:45 to 2:15 | — | Rehearse the pitch, team details for the submission |
@@ -219,7 +238,7 @@ Listening to or recording calls (California all-party consent law + "store nothi
 2. **Meet Margaret, 78 (20s):** her daughter opens **Family setup**: Wells Fargo, Kaiser, PG&E, no loans, "Call Sarah first", and the DROP checklist.
 3. **The innovation (40s):** Margaret gets a text: "Chase: your home loan payment failed, verify here." Paste it and get ⛔: "You don't bank with Chase. You don't have a home loan." Point out that the link isn't clickable.
 4. **The phone call (40s):** her "grandson" calls in a panic. Tap 🚨 **I'm on a call right now**: "It's OK to hang up" and **Call Sarah**. She taps **I hung up** and says into the box, "My grandson said he's in jail and needs gift cards and not to tell his mom," which gives ⛔.
-5. **Point out the simplicity:** "Every screen has at most two buttons. There's one box for everything."
+5. **Point out the simplicity, and paper (20s):** "Every screen has at most two buttons. And because not every senior uses technology, Sarah prints Margaret's **Second Look card** for the fridge: her bank, who to call, the three questions." Hold up a printed card.
 6. **Trust (20s):** "It stores nothing, removes personal numbers, can't be used to accidentally call or click a scammer, and helps families file California's DROP request to cut off scammers at the source."
 7. **Community and next steps (25s):** family sets it up, SASCC teaches it; next come Practice mode for workshops, spam-blocker guides, and forwarding by text. Close: **"A second look, before it's too late."**
 

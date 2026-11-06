@@ -11,7 +11,9 @@ Read `OUTLINE.md` first. It is the plan: the one-line narrative, screens, rules,
 
 **Simplicity rule:** no screen has more than **two buttons**. There's one box for both calls and messages, and one thing to read at a time. When in doubt, take a button away.
 
-Screens: **Home** (one box, "Check it", 🚨 "I'm on a call right now", small "Family setup" link) → **Results** (answer, up to 3 reasons, up to 3 steps, "Start over") · **On a call right now** ("Call [helper]", "I hung up") · **Family setup** (Isabel).
+Screens: **Home** (one box, "Check it", 🚨 "I'm on a call right now", small "Family setup" link) → **Results** (answer, up to 3 reasons, up to 3 steps, "Start over") · **On a call right now** ("Call [helper]", "I hung up") · **Family setup** (Isabel) · **Printable Second Look card** (`/card.html`, Logan), for seniors who don't use technology.
+
+Live site: https://wvc-ai-hackathon.onrender.com (redeploys on every push to `main`).
 
 The app never listens to or records calls (California all-party consent law + "store nothing").
 
@@ -20,7 +22,7 @@ Only edit files your person owns. If a change is needed in someone else's file, 
 
 | Owner | Files |
 |---|---|
-| **Logan** | `server.js`, `lib/**`, `public/index.html`, `public/style.css`, `public/app.js`, `examples/**`, `package.json`, `package-lock.json`, `README.md`, `CLAUDE.md`, `OUTLINE.md`, `.gitignore`, `.gitattributes`, `.env.example` |
+| **Logan** | `server.js`, `lib/**`, `public/index.html`, `public/style.css`, `public/app.js`, `public/card.html`, `public/card.js`, `public/card.css`, `examples/**`, `package.json`, `package-lock.json`, `README.md`, `CLAUDE.md`, `OUTLINE.md`, `.gitignore`, `.gitattributes`, `.env.example` |
 | **Isabel** | `public/setup.js`, `public/setup.css`, `data/companies.json`, `notes/**`, `panel-notes.md` |
 
 New files: create them only inside your own area. Ask before adding anything elsewhere.
@@ -53,7 +55,8 @@ These connection points stay fixed. Don't change them without both people agreei
 ```
 `category` is one of `bank`, `health`, `utility`, `phone`, `shopping`, `delivery`, `tech`. About 30 common companies, including the big banks, Kaiser, PG&E, Comcast/Xfinity, AT&T, Verizon, T-Mobile, Amazon, Apple, Microsoft, PayPal, USPS, UPS and FedEx. Government agencies (IRS, Social Security, Medicare) are **not** in this list; Logan's rules handle them.
 - **Styles:** `setup.css` uses the shared CSS variables from `style.css` (`--text-base`, `--color-text`, `--color-bg`, `--btn-height`, etc.), never redefines `:root`, and prefixes every selector with `#setup`.
-- **Setup screen layout:** one scrolling page, one big **Save** button; "Use example setup" and "Delete everything" are small text links. It's for the family member, but it follows the same accessibility rules.
+- **Setup screen layout:** one scrolling page, one big **Save** button; "Use example setup", "Delete everything" and **"Print a card for the fridge"** are small text links. It's for the family member, but it follows the same accessibility rules.
+- **Print link:** "Print a card for the fridge" is a plain link to **`/card.html`** (Logan's page, opens in the same tab). That page reads the same `secondlook.profile` from `localStorage` and lays out the printable card. Setup only needs the link.
 
 ## Non-negotiable rules for every feature
 **Privacy (top priority)**
