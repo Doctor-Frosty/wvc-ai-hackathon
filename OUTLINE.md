@@ -58,7 +58,7 @@ Calls and messages use the **same box**: no menus, no question screens.
 1. **The answer, big:** ⛔ **This looks like a scam** / ⚠️ **Be careful** / ✅ **No warning signs found**. Never "Safe".
 2. **Why**, at most 3 short sentences, including trusted-list reasons ("You don't bank with Chase.").
 3. **What to do now**, at most 3 steps (for example: don't reply, don't click, call Sarah).
-4. Smaller text below: where to report it (FTC, 1-800-MEDICARE) and the California DROP tip: "Scammers often buy your details from data brokers. One free request tells 500+ of them to delete your information: privacy.ca.gov/drop. A family member or SASCC can help."
+4. Smaller text below: **the one right place to report this kind of scam** (see "California support: one right agency" below) and the California DROP tip: "Scammers often buy your details from data brokers. One free request tells 500+ of them to delete your information: privacy.ca.gov/drop. A family member or SASCC can help."
 5. One button: **"Start over"**
 
 ### 👪 Family setup: "My trusted list" (the innovation)
@@ -72,6 +72,22 @@ Filled in once by a family member on the senior's phone or tablet:
 **Keep it simple here too:** one scrolling page of checkboxes and short fields, one big **"Save"** button. "Use example setup" (loads a demo profile, "Margaret") and "Delete everything" are small text links at the bottom.
 
 **Privacy:** saved **only in this device's browser**, never on our server. No account numbers, ever.
+
+### California support: one right agency per scam type
+The panel asked how to include California's multi-agency fraud support. The results screen shows **only the one agency that fits the scam type** the rules detected, as plain, non-clickable text. Contacts verified 2026-11-06 via Keenable from official sites:
+
+| Scam type | Show this | Source |
+|---|---|---|
+| Investment or crypto | CA Dept. of Financial Protection & Innovation (DFPI): **(866) 275-2677**, dfpi.ca.gov/submit-a-complaint | dfpi.ca.gov |
+| Medicare or health | California Senior Medicare Patrol: **(855) 613-7080** | aging.ca.gov |
+| Social Security | SSA Office of the Inspector General: oig.ssa.gov/report | oig.ssa.gov |
+| Money already lost, or someone taking advantage of a senior | Call your bank first; then Santa Clara County Adult Protective Services, 24/7: **(408) 975-4900** or **(800) 414-2002**; and the DA Elder Fraud Unit: **(855) 323-5337** | ssa.santaclaracounty.gov · sccgov.org (DA page indexed 2018, recheck) |
+| Everything else | CA Attorney General: **(800) 952-5225**, oag.ca.gov · FTC: **(877) 382-4357**, reportfraud.ftc.gov | oag.ca.gov · FTC |
+| Fewer scams in future | CalPrivacy DROP: privacy.ca.gov/drop | privacy.ca.gov |
+
+If anyone's life is in danger: **911**. These live in `lib/resources.js` (Logan), mapped from rule categories.
+
+**Pitch line:** "Second Look doesn't just say 'scam.' It tells you the one California agency that handles this exact kind of fraud."
 
 ## 4. Non-negotiable design rules
 
