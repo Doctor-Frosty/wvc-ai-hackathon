@@ -23,6 +23,7 @@
         <div class="app-title">
           <p class="app-name">Second Look</p>
           <p class="app-tagline">Check it before you trust it.</p>
+          <p class="app-learn"><a href="#about">Learn about Second Look</a></p>
         </div>
         <a href="#setup" id="setup-link" class="header-link">👪 Family setup</a>
       </header>
@@ -48,8 +49,6 @@
           Taking a second look… this takes a few seconds.
         </p>
       </form>
-
-      <p class="small-link"><a href="/about.html">About Second Look</a></p>
 
     </section>
 
@@ -97,6 +96,66 @@
 
       <a id="results-call" class="btn btn-urgent" href="#" hidden>Call</a>
       <button type="button" id="startover-button" class="btn btn-primary">Start over</button>
+    </section>
+
+    <!-- LEARN ABOUT: choice screen (copy from Isabel, notes/for-logan-learn-about.md) -->
+    <section id="about" class="screen" aria-labelledby="about-title" hidden>
+      <h1 id="about-title" tabindex="-1">Learn about Second Look</h1>
+      <p class="lead">Who is reading this?</p>
+      <a class="btn btn-primary" href="#about-user">I'm using Second Look</a>
+      <a class="btn btn-secondary" href="#about-family">I'm helping a family member</a>
+      <p class="small-link"><a href="#home">Back to start</a></p>
+    </section>
+
+    <!-- LEARN ABOUT: for the person using it (kept short on purpose) -->
+    <section id="about-user" class="screen" aria-labelledby="about-user-title" hidden>
+      <h1 id="about-user-title" tabindex="-1">Second Look is here to help you</h1>
+      <p class="lead big-line">Not sure if a call or a message is real? Ask Second Look.</p>
+      <ol class="steps">
+        <li>Paste the message, or type what the caller said.</li>
+        <li>Tap <strong>Check it</strong>.</li>
+        <li>We tell you what we think, and what to do next.</li>
+      </ol>
+      <p>On the phone with someone who is scaring you? Tap the red button. It's OK to hang up.</p>
+      <p>We don't save what you share.</p>
+      <p>Second Look gives advice, not a promise. If you are still not sure, <span id="about-helper">call someone you trust</span>.</p>
+      <a class="btn btn-primary" href="#home">Back to start</a>
+    </section>
+
+    <!-- LEARN ABOUT: for the family member -->
+    <section id="about-family" class="screen about-family" aria-labelledby="about-family-title" hidden>
+      <h1 id="about-family-title" tabindex="-1">For family members</h1>
+
+      <h2>What Second Look is</h2>
+      <p>A trusted second opinion for a parent or grandparent who gets a suspicious call, text or email. They paste in the message, or type what the caller said, and Second Look says whether it looks like a scam and what to do next.</p>
+
+      <h2>Why set it up for them</h2>
+      <p>You fill in what they really use: their banks, their doctor, their utilities, and the accounts they have. Then Second Look can tell right away when a message does not fit. For example, "Chase: your home loan payment failed" is flagged because they do not bank with Chase and have no home loan.</p>
+
+      <h2>How to set it up (about five minutes)</h2>
+      <ol class="steps">
+        <li>Open Family setup on their phone or tablet.</li>
+        <li>Tick the companies and accounts they really have. Add one person to call first, like you.</li>
+        <li>Tap <strong>Save</strong>.</li>
+      </ol>
+      <p>Want to look around first? Tap <strong>Use example setup</strong> on that page.</p>
+
+      <h2>Privacy</h2>
+      <p>Everything you fill in stays on that device. We don't keep a copy and we don't save what they check. We never ask for account numbers. We remove personal numbers we recognize, like Social Security and bank numbers, before checking. To explain its answer, Second Look sends the message, without those numbers, to Google's Gemini AI.</p>
+
+      <h2>What it will not do</h2>
+      <p>It never listens to or records calls. It never makes a link or a number from a message tappable, and it cannot send, reply or pay. The only call buttons dial the helper you chose, SASCC, or official numbers we provide. It gives guidance, not a guarantee, so the answer is never "safe". The best answer is "No warning signs found".</p>
+
+      <h2>Good to know</h2>
+      <ul class="steps">
+        <li>There is a <a href="/card.html">printable card</a> for people who don't use a phone or tablet.</li>
+        <li>California's free DROP request asks over 500 data brokers to delete your relative's information, which means fewer scam calls. It takes about 10 minutes at privacy.ca.gov/drop. Setup has a checklist item for it.</li>
+        <li>SASCC (Successful Aging Solutions &amp; Community Consulting) can help with questions: (408) 868-1257.</li>
+      </ul>
+      <p class="small-link"><a href="/about.html">Read more about Second Look</a></p>
+
+      <a class="btn btn-primary" href="#setup">Open Family setup</a>
+      <a class="btn btn-secondary" href="#home">Back to start</a>
     </section>
 
     <!-- FAMILY SETUP: built by Isabel in setup.js / setup.css -->

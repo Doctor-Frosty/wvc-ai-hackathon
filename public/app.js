@@ -8,7 +8,13 @@
   const SASCC_PHONE = '+14088681257';
   const $ = (id) => document.getElementById(id);
 
-  const screens = ['home', 'oncall', 'results', 'setup'];
+  const screens = ['home', 'oncall', 'results', 'setup', 'about', 'about-user', 'about-family'];
+  // Screens you can reach (and go back to) through the address bar.
+  const ROUTED = ['setup', 'about', 'about-user', 'about-family'];
+  const screenFromHash = () => {
+    const name = location.hash.replace('#', '');
+    return ROUTED.includes(name) ? name : 'home';
+  };
   let setupStarted = false;
   let trustedCall = { href: `tel:${SASCC_PHONE}`, label: '📞 Call SASCC' };
 
@@ -65,6 +71,12 @@
 
     if (name === 'home') applyProfile();
     if (name === 'oncall') applyProfile();
+    if (name === 'about-user') {
+      // "If you are still not sure, call Sarah." Plain text, not a phone link, on this screen.
+      const p = loadProfile();
+      const helperName = p && p.helper && typeof p.helper.name === 'string' ? p.helper.name.trim().slice(0, 40) : '';
+      $('about-helper').textContent = helperName ? `call ${helperName}` : 'call someone you trust';
+    }
     if (name === 'setup' && !setupStarted) {
       setupStarted = true;
       if (typeof window.initSetup === 'function') {
@@ -81,11 +93,8 @@
     if (target) target.focus({ preventScroll: true });
   }
 
-  // Back button and the "Family setup" link use the URL hash.
-  window.addEventListener('hashchange', () => {
-    const name = location.hash.replace('#', '');
-    show(name === 'setup' ? 'setup' : 'home');
-  });
+  // Back button, "Family setup" and "Learn about" links use the URL hash.
+  window.addEventListener('hashchange', () => show(screenFromHash()));
 
   // ---------- Results ----------
   const VERDICTS = {
@@ -254,5 +263,5 @@
   // Family setup can call this after saving, so the greeting and helper update.
   window.SecondLook = { refreshProfile: applyProfile };
 
-  show(location.hash === '#setup' ? 'setup' : 'home');
+  show(screenFromHash());
 })();
