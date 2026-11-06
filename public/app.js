@@ -4,6 +4,8 @@
 
 (() => {
   const PROFILE_KEY = 'secondlook.profile';
+  // Our community partner: the call button when no family helper is set up (verified on sascc.org).
+  const SASCC_PHONE = '+14088681257';
   const $ = (id) => document.getElementById(id);
 
   const screens = ['home', 'oncall', 'results', 'setup'];
@@ -43,14 +45,10 @@
     const helper = profile && profile.helper;
     const phone = helper ? cleanPhone(helper.phone) : '';
     const helperName = helper && typeof helper.name === 'string' ? helper.name.trim().slice(0, 40) : '';
-    if (phone) {
-      helperLink.href = `tel:${phone}`;
-      helperLink.textContent = `📞 Call ${helperName || 'my helper'}`;
-      helperLink.hidden = false;
-    } else {
-      helperLink.hidden = true;
-      helperLink.removeAttribute('href');
-    }
+    // Always offer one trusted call: the family helper if set up, otherwise SASCC.
+    helperLink.href = `tel:${phone || SASCC_PHONE}`;
+    helperLink.textContent = phone ? `📞 Call ${helperName || 'my helper'}` : '📞 Call SASCC';
+    helperLink.hidden = false;
   }
 
   // ---------- Screens ----------
