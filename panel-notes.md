@@ -14,8 +14,8 @@
     
     - like to see tool that can help them protect themselves against phone calls, emails, investment scams, ease of use, limit info, accessible, make it almost impossible to accidentally do something harmful with the tool
 
-- drop program?
-- CA privacy something? 
+- drop program: https://privacy.ca.gov/drop/ 
+- CA privacy something: how can we include the multi-agency support that CA offers for fraud and scams? 
       
 
 ## ideas for features/UX
