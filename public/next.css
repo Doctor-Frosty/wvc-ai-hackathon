@@ -1,0 +1,45 @@
+/* Next steps page for the presentation: big, calm, readable from the back of a room. */
+
+/* Sized to fit one 1366x768 projector screen without scrolling. */
+#next-page { max-width: 78rem; padding-top: 1.25rem; padding-bottom: 1rem; }
+
+.next-head h1 { font-size: clamp(2rem, 3.6vw, 3rem); margin-top: 0.1rem; }
+.next-head .lead { font-size: clamp(1.25rem, 1.6vw, 1.5rem); margin-top: 0.25rem; color: var(--color-muted); }
+
+.next-grid {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.next-item {
+  border: 3px solid var(--color-text);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  background: #fff;
+}
+.next-icon { font-size: 2rem; line-height: 1; display: block; }
+.next-item h2 { font-size: 1.375rem; margin: 0.4rem 0 0.25rem; }
+.next-item p { font-size: 1.125rem; line-height: 1.45; }
+
+.next-try {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+}
+.next-try img { background: #fff; padding: 0.4rem; border-radius: 0.5rem; width: 7.5rem; height: 7.5rem; flex: none; }
+.next-try h2 { margin: 0; font-size: 2rem; }
+.next-try p { font-size: 1.5rem; }
+.next-try .note { color: #e6ecf7; font-size: var(--text-small); }
+
+@media (max-width: 40rem) {
+  .next-try { flex-direction: column; align-items: flex-start; }
+}
