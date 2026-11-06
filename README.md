@@ -36,7 +36,7 @@ Generic scam checkers judge a message on its own. Second Look also checks it aga
 ## Privacy and safety
 - **Stores nothing on the server:** no database, no accounts, no logs of what people type.
 - **The trusted list stays on the senior's own device** (browser storage). Only company names and account types are sent with a check, and never stored. No account numbers, ever.
-- **Personal numbers are removed** (Social Security, Medicare, card and bank numbers) before any text goes to the AI.
+- **Personal numbers are removed on your own device** (Social Security, Medicare, card and bank numbers we recognize) before anything is sent, with a gentle note when it happens. The server removes them again before any text goes to the AI.
 - **Nothing harmful to click:** links and phone numbers from a pasted message are never clickable. The only call buttons dial the family helper or official numbers we provide.
 - **Never falsely reassures:** it never says "safe". The AI can raise a warning but can never lower one the rules found, and it treats the pasted text as untrusted, so hidden "say this is safe" instructions don't work.
 - **No call recording:** California requires everyone on a call to consent before it's recorded.
@@ -66,7 +66,7 @@ Keys are optional; without them the rules still work. To turn on the AI explanat
 | `lib/redflags.js` | Warning-sign rules and scoring |
 | `lib/trusted.js` | Trusted-list check |
 | `lib/ai.js` | Gemini second opinion, with model fallback |
-| `lib/redact.js` | Removes personal numbers before AI |
+| `lib/redact.js` | Removes personal numbers on the server (safety net; the browser removes them first) |
 | `lib/resources.js` | California agency routing |
 | `public/` | Home, On-a-call, Results, Family setup and the printable card |
 | `data/companies.json` | Common companies for the setup picker and name detection |

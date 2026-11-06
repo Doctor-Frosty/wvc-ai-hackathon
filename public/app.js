@@ -105,8 +105,15 @@
     );
   }
 
-  function showResult(result) {
+  function showResult(result, removed = 0) {
     const kind = VERDICTS[result.verdict] ? result.verdict : 'unknown';
+
+    const removedNote = $('removed-note');
+    removedNote.textContent =
+      removed > 0
+        ? `We removed ${removed === 1 ? 'a personal number' : 'some personal numbers'} from your message before checking it, to protect you.`
+        : '';
+    removedNote.hidden = removed === 0;
     const v = VERDICTS[kind];
     const box = $('verdict');
     box.className = `verdict ${kind}`;
@@ -164,6 +171,29 @@
   $('read-wrap').hidden = !canSpeak;
   $('read-button').addEventListener('click', readResults);
 
+  // ---------- Remove personal numbers in the browser, before anything is sent ----------
+  // Same patterns as lib/redact.js (which stays on the server as a safety net).
+  // Phone numbers are kept on purpose: they are what scammers use.
+  const REDACT_PATTERNS = [
+    { re: /\b\d{3}[-\s]\d{2}[-\s]\d{4}\b/g }, // Social Security number
+    { re: /\b[1-9][A-Z][A-Z0-9]\d[-\s]?[A-Z][A-Z0-9]\d[-\s]?[A-Z]{2}\d{2}\b/gi }, // Medicare number
+    { re: /\b(?:\d[-\s]?){12,18}\d\b/g }, // card number
+    { re: /\b\d{8,17}\b/g, keep: (m) => /^1?\d{10}$/.test(m) && (m.length === 10 || m.startsWith('1')) }, // account number
+  ];
+
+  function redactInBrowser(text) {
+    let out = text;
+    let removed = 0;
+    for (const { re, keep } of REDACT_PATTERNS) {
+      out = out.replace(re, (match) => {
+        if (keep && keep(match)) return match;
+        removed += 1;
+        return '[removed]';
+      });
+    }
+    return { text: out, removed };
+  }
+
   // ---------- Check ----------
   async function runCheck(event) {
     event.preventDefault();
@@ -180,6 +210,9 @@
       return;
     }
 
+    // Personal numbers we recognize are removed here, on this device. Only the cleaned text is sent.
+    const safe = redactInBrowser(text);
+
     button.disabled = true;
     button.textContent = 'Checking…';
     $('checking').hidden = false;
@@ -187,11 +220,11 @@
       const res = await fetch('/api/check', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, trusted: trustedForCheck(loadProfile()) }),
+        body: JSON.stringify({ text: safe.text, trusted: trustedForCheck(loadProfile()) }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || 'Something went wrong.');
-      showResult(data);
+      showResult(data, safe.removed);
     } catch (err) {
       errorEl.textContent = `${err.message} When in doubt, hang up and call someone you trust.`;
       errorEl.hidden = false;

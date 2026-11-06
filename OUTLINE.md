@@ -29,7 +29,7 @@ Every feature below must serve this one story. Anything that doesn't goes to "Ne
 |---|---|
 | Protect against **phone calls, emails, investment scams** | One box for calls and messages + "On a call right now"; investment-scam red flags |
 | **Ease of use, accessible** | At most two buttons per screen, large print, high contrast |
-| **Limit info** | Store nothing on our server; trusted list stays on the senior's own device; personal numbers removed before AI |
+| **Limit info** | Store nothing on our server; trusted list stays on the senior's own device; personal numbers we recognize are removed on the device, before anything is sent |
 | **Almost impossible to accidentally do harm** | Nothing from a pasted message is ever clickable; only trusted numbers can be called |
 | **CA privacy / DROP program** | Every warning result and the family setup point to California's free DROP data-broker deletion |
 | Innovation, serving the community, clear narrative | Personal trusted list; family + SASCC as the support network; one problem → one solution |
@@ -107,7 +107,7 @@ If anyone's life is in danger: **911**. These live in `lib/resources.js` (Logan)
 
 ### Privacy (top priority)
 1. **Store nothing on the server:** no database, no accounts, no logs of message text.
-2. **Warn before typing:** "Don't include your Social Security, Medicare, bank or card numbers."
+2. **Remove personal numbers automatically, in the browser, before sending:** Social Security, Medicare, card and bank numbers we recognize become `[removed]` on the senior's own device, with a gentle note on Results. The server removes them again as a safety net. Never claim "all" numbers: say "personal numbers we recognize".
 3. **Remove personal numbers** (SSN, Medicare, card, bank account) before any text goes to Gemini. The Gemini free tier may use data to improve Google's products.
 4. **The trusted list lives on the device only.** Only company names and account types are sent with a check (needed for the comparison) and never stored.
 5. **Send Keenable only a phone number,** never the message.
@@ -239,7 +239,7 @@ Listening to or recording calls (California all-party consent law + "store nothi
 3. **The innovation (40s):** Margaret gets a text: "Chase: your home loan payment failed, verify here." Paste it and get ⛔: "You don't bank with Chase. You don't have a home loan." Point out that the link isn't clickable.
 4. **The phone call (40s):** her "grandson" calls in a panic. Tap 🚨 **I'm on a call right now**: "It's OK to hang up" and **Call Sarah**. She taps **I hung up** and says into the box, "My grandson said he's in jail and needs gift cards and not to tell his mom," which gives ⛔.
 5. **Point out the simplicity, and paper (20s):** "Every screen has at most two buttons. And because not every senior uses technology, Sarah prints Margaret's **Second Look card** for the fridge: her bank, who to call, the three questions." Hold up a printed card.
-6. **Trust (20s):** "It stores nothing, removes personal numbers, can't be used to accidentally call or click a scammer, and helps families file California's DROP request to cut off scammers at the source."
+6. **Trust (20s):** "It stores nothing, removes personal numbers we recognize on your own device before anything is sent, can't be used to accidentally call or click a scammer, and helps families file California's DROP request to cut off scammers at the source."
 7. **Community and next steps (25s):** family sets it up, SASCC teaches it; next come Practice mode for workshops, spam-blocker guides, and forwarding by text. Close: **"A second look, before it's too late."**
 
 **Backup:** screenshots or a recording in case Wi-Fi or the live site fails.

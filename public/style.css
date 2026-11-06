@@ -208,6 +208,18 @@ textarea {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* Gentle note when personal numbers were removed */
+.removed-note {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-left: 6px solid var(--color-ok);
+  background: var(--color-ok-bg);
+  color: var(--color-ok);
+  font-size: var(--text-small);
+  font-weight: 700;
+  border-radius: 0.4rem;
+}
+
 /* "Read it to me": a quiet, text-style control so the screen still has two main buttons */
 .read-aloud { margin-top: 0.75rem; }
 .link-button {
