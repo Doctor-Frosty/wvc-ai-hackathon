@@ -35,13 +35,18 @@
 
       <form id="check-form" novalidate>
         <label for="check-text" class="big-label">Paste the message, or type what the caller said.</label>
+        <ul class="note paste-help" id="paste-help">
+          <li><strong>To copy a message:</strong> press and hold your finger on the message, then tap <strong>Copy</strong>.</li>
+          <li><strong>To paste it here:</strong> press and hold your finger inside the box below, then tap <strong>Paste</strong>.</li>
+          <li class="paste-computer">On a computer: press <strong>Ctrl</strong> and <strong>V</strong> to paste. On a Mac, press <strong>Command</strong> and <strong>V</strong>.</li>
+        </ul>
         <p class="note" id="privacy-note">
           We remove personal numbers we recognize, like Social Security and bank numbers, before checking.
           We don't save what you share.
         </p>
-        <textarea id="check-text" rows="7" maxlength="2000" aria-describedby="privacy-note mic-tip check-error"
+        <textarea id="check-text" rows="7" maxlength="2000" aria-describedby="paste-help privacy-note mic-tip check-error"
           placeholder=""></textarea>
-        <p class="note tip" id="mic-tip">Tip: tap the 🎤 on your keyboard to speak instead of typing.</p>
+        <p class="note tip" id="mic-tip"><strong>Rather talk than type?</strong> Tap the <strong>🎤 microphone</strong> on your phone's keyboard, then say it out loud. Your phone turns your words into text.</p>
         <p id="check-error" class="error" role="alert" hidden></p>
         <button type="submit" id="check-button" class="btn btn-primary">Check it</button>
         <p id="checking" class="checking" role="status" aria-live="polite" hidden>

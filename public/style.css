@@ -212,6 +212,15 @@ textarea {
 
 .tip { margin-top: 0.5rem; margin-bottom: 0; }
 
+/* Copy-and-paste help under the box label */
+.paste-help { padding-left: 1.25rem; margin: 0 0 0.75rem; display: grid; gap: 0.35rem; }
+.paste-help strong { color: var(--color-text); }
+
+/* The phone microphone tip only makes sense on touch screens; computers see only the paste help. */
+@media (pointer: fine) { #mic-tip { display: none; } }
+/* Phones: the computer line is the first to go, to keep Home short */
+@media (pointer: coarse) { .paste-computer { display: none; } }
+
 /* Phones: a shorter box so "Check it" stays close by */
 @media (max-width: 30rem) {
   textarea { min-height: 7.5rem; }
