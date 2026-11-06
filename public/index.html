@@ -54,12 +54,14 @@
 
     <!-- ON A CALL RIGHT NOW: calm, two buttons -->
     <section id="oncall" class="screen" aria-labelledby="oncall-title" hidden>
-      <h1 id="oncall-title" tabindex="-1">It's OK to hang up.</h1>
-      <p class="lead">Real banks and government offices never mind if you hang up and call them back.</p>
-      <ul class="steps">
-        <li><strong>Don't</strong> give any numbers, buy gift cards, send money, or press keys they tell you to.</li>
-        <li><strong>Call back</strong> on a number you look up yourself, from your card or bill. Never use a number they gave you.</li>
-        <li>If they say a family member is in trouble, <strong>hang up and call that person directly</strong>.</li>
+      <div class="calm-panel">
+        <h1 id="oncall-title" tabindex="-1">It's OK to hang up.</h1>
+        <p>Real banks and government offices never mind if you hang up and call them back.</p>
+      </div>
+      <ul class="icon-list">
+        <li><span class="icon" aria-hidden="true">🚫</span><span><strong>Don't</strong> give any numbers, buy gift cards, send money, or press keys they tell you to.</span></li>
+        <li><span class="icon" aria-hidden="true">📞</span><span><strong>Call back</strong> on a number you look up yourself, from your card or bill. Never use a number they gave you.</span></li>
+        <li><span class="icon" aria-hidden="true">👪</span><span>If they say a family member is in trouble, <strong>hang up and call that person directly</strong>.</span></li>
       </ul>
       <a id="call-helper" class="btn btn-primary" href="#" hidden>Call</a>
       <button type="button" id="hungup-button" class="btn btn-secondary">I hung up</button>
@@ -81,8 +83,11 @@
       <h2>Why</h2>
       <ul id="reasons" class="reasons"></ul>
 
-      <h2>What to do now</h2>
-      <ol id="steps" class="steps"></ol>
+      <div class="todo-box">
+        <h2>What to do now</h2>
+        <ol id="steps" class="steps"></ol>
+      </div>
+      <a id="results-call" class="btn btn-urgent" href="#" hidden>Call</a>
 
       <div class="fine-print">
         <p id="report-line">You can report scams to the FTC at reportfraud.ftc.gov.</p>
@@ -94,8 +99,7 @@
         <p>This tool gives guidance, not a guarantee. If you're unsure, call someone you trust.</p>
       </div>
 
-      <a id="results-call" class="btn btn-urgent" href="#" hidden>Call</a>
-      <button type="button" id="startover-button" class="btn btn-primary">Start over</button>
+      <button type="button" id="startover-button" class="btn btn-secondary">Start over</button>
     </section>
 
     <!-- LEARN ABOUT: choice screen (copy from Isabel, notes/for-logan-learn-about.md) -->
