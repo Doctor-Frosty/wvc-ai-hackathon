@@ -13,6 +13,9 @@
   - seniors fraud and scam:
     
     - like to see tool that can help them protect themselves against phone calls, emails, investment scams, ease of use, limit info, accessible, make it almost impossible to accidentally do something harmful with the tool
+
+- drop program?
+- CA privacy something? 
       
 
 ## ideas for features/UX
